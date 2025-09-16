@@ -1,0 +1,20 @@
+### VSCode ###
+/.vscode/
+
+### LaTeX Generated Files ###
+*.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.vrb
+*.xdv
+*.nav
+*.snm
+*.synctex.gz
+_minted/
+
+
+
