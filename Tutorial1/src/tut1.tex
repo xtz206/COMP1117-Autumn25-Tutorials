@@ -1,0 +1,308 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\title{COMP1117 Tutorial 1}
+\author{Yuan Wenxuan}
+% \institute{HKU}
+\date{September 18, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Before We Start...}
+    \begin{itemize}
+        \item Please mute your microphone during the tutorial
+        \item Feel free to ask questions anytime
+        \item We will go through the tutorial exercises together
+        \item You can also ask questions in the chat box
+        \item We will have a Q\&A session at the end of the tutorial
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{About Us (Student TAs)}
+
+    \begin{itemize}
+        \item Yuan Wenxuan (Peter)
+              \begin{itemize}
+                  \item Year 2 Computer Science Student (BEng(CompSc))
+                  \item Contact me: \href{mailto:u3629274@connect.hku.hk}{u3629274@connect.hku.hk}
+              \end{itemize}
+        \item Yip Wing Long (Cyrus)
+              \begin{itemize}
+                  \item Contact: \href{mailto:cyrus.wlyip@gmail.com}{cyrus.wlyip@gmail.com}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Please Note...}
+
+    \begin{itemize}
+        \item Our First Tutorial Today
+              \begin{itemize}
+                  \item Online via Zoom
+                  \item Try to install Python interpreter on your computer
+              \end{itemize}
+        \item Later Tutorials
+              \begin{itemize}
+                  \item \textbf{Thursday 10:00 - 11:50}, \textbf{HW311}, Face to Face
+                  \item No attendance taken (But recommended to attend)
+              \end{itemize}
+        \item Contents
+              \begin{itemize}
+                  \item Recap the lectures
+                  \item Go through the slides provided by the teaching team
+                  \item Solve the tutorial exercises
+                  \item Q\&A: Deal with your confusions
+              \end{itemize}
+        \item \textbf{Tutorial Exercises} (10\% of your final grade!)
+              \begin{itemize}
+                  \item Deadline: \textbf{next Friday 23:59} of the tutorial class
+                  \item Example: For Sept 18 T1, the deadline is \textbf{Sept 26 23:59}
+                  \item Late work is \textbf{NOT} accepted
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Overview}
+    In previous lectures, we have learned:
+    \begin{itemize}
+        \item Data Types: \mintinline{python}|int|, \mintinline{python}|float|, \mintinline{python}|str|, \mintinline{python}|bool|
+        \item Type Casting and Input
+        \item Variables and Naming Rules
+        \item Sequences and Containers: \texttt{list}, \texttt{tuple}, \texttt{dict}, \texttt{set}
+        \item Operators and Expressions (Arithmetic, Comparison, Logical)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Data Types}
+    \begin{itemize}
+        \item Primitive Data Types
+              \begin{itemize}
+                  \item Integer (\mintinline{python}|int|): Whole numbers, e.g., \mintinline{python}|42|
+                  \item Floating-point number (\mintinline{python}|float|): Decimal numbers, e.g., \mintinline{python}|3.14|
+                  \item String (\mintinline{python}|str|): Text enclosed in quotes, e.g., \mintinline{python}|"Hello, World!"|
+                  \item Boolean (\mintinline{python}|bool|): Represents truth values, either \mintinline{python}|True| or \mintinline{python}|False|
+              \end{itemize}
+        \item String Laterals
+              \begin{itemize}
+                  \item Single quotes: \mintinline{python}|'Hello'|
+                  \item Double quotes: \mintinline{python}|"Hello"|
+                  \item Triple quotes (for multi-line strings):
+                        \mintinline{python}|'''Hello'''| or \mintinline{python}|"""Hello"""|
+                  \item Escape characters: \mintinline{python}|\n| (newline), \mintinline{python}|\t| (tab), \mintinline{python}|\\| (backslash), etc.
+                  \item r-strings (raw strings): \mintinline{python}|r"C:\path\to\file"|
+                  \item f-strings (formatted strings): \mintinline{python}|f"Hello, {name}!"|
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Type Casting and Input}
+    \begin{itemize}
+        \item Type Casting
+              \begin{itemize}
+                  \item Convert one data type to another
+                  \item Functions: \mintinline{python}|int()|, \mintinline{python}|float()|, \mintinline{python}|str()|, \mintinline{python}|bool()|
+                  \item Example: \mintinline{python}|int("42")| converts the string "42" to the integer 42
+              \end{itemize}
+        \item Input
+              \begin{itemize}
+                  \item Get user input from the console
+                  \item Function: \mintinline{python}|input()|
+                  \item Note: Input is always treated as a string, so type casting may be needed
+                  \item Example: \mintinline{python}|age = int(input("Enter your age: "))|
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Variables and Naming Rules}
+    \begin{itemize}
+        \item Variables
+              \begin{itemize}
+                  \item Named storage for data
+                  \item Created by assignment: \mintinline{python}|variable_name = value|
+                  \item Example: \mintinline{python}|x = 10|, \mintinline{python}|name = "Alice"|
+              \end{itemize}
+        \item Naming Rules
+              \begin{itemize}
+                  \item Must start with a letter (a-z, A-Z) or an underscore (\_)
+                  \item Can contain letters, digits (0-9), and underscores
+                  \item Case-sensitive: \mintinline{python}|myVar| and \mintinline{python}|myvar| are different
+                  \item Cannot be a reserved keyword (e.g., \mintinline{python}|if|, \mintinline{python}|for|, etc.)
+              \end{itemize}
+        \item Naming Better (Optional)
+              \begin{itemize}
+                  \item Use meaningful names which reflect its purpose
+                  \item Use snake\_case for multi-word variable names: \mintinline{python}|my_variable_name|
+                  \item  snake\_case is more recommended in Python
+                  \item Use all uppercase letters for constants: \mintinline{python}|CONST|
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Sequences and Containers}
+    \begin{itemize}
+        \item List (\texttt{list})
+              \begin{itemize}
+                  \item Ordered, mutable collection of items
+                  \item Created using square brackets: \mintinline{python}|my_list = [1, 2, 3]|
+                  \item Access elements using indices: \mintinline{python}|my_list[0]| gives 1
+              \end{itemize}
+        \item Tuple (\texttt{tuple})
+              \begin{itemize}
+                  \item Ordered, immutable collection of items
+                  \item Created using parentheses: \mintinline{python}|my_tuple = (1, 2, 3)|
+                  \item Single-element tuple: \mintinline{python}|single_tuple = (1,)| (note the comma)
+                  \item Access elements using indices: \mintinline{python}|my_tuple[0]| gives 1
+              \end{itemize}
+        \item Mutable vs Immutable
+              \begin{itemize}
+                  \item Mutable: Can be changed after creation (e.g., \texttt{list})
+                  \item Immutable: Cannot be changed after creation (e.g., \texttt{tuple})
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Sequences and Containers}
+    \begin{itemize}
+        \item Dictionary (\texttt{dict})
+              \begin{itemize}
+                  \item Unordered collection of key-value pairs
+                  \item Created using curly braces: \mintinline{python}|my_dict = {"key": "value"}|
+                  \item Access values using keys: \mintinline{python}|my_dict["key"]| gives "value"
+              \end{itemize}
+        \item Set (\texttt{set})
+              \begin{itemize}
+                  \item Unordered collection of unique items
+                  \item Created using curly braces: \mintinline{python}|my_set = {1, 2, 3}|
+                  \item No indexing, but can check membership: \mintinline{python}|1 in my_set| gives \mintinline{python}|True|
+              \end{itemize}
+        \item Note: Both are mutable
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Recapping the Lectures: Operators and Expressions}
+
+    \begin{itemize}
+        \item Statements vs Expressions
+              \begin{itemize}
+                  \item Statement: Performs an action (e.g., assignment, control flow)
+                  \item Expression: Evaluates to a value (e.g., arithmetic operations)
+                  \item In short: Statements do something, expressions are something
+              \end{itemize}
+        \item Arithmetic Operators
+              \begin{itemize}
+                  \item Basic math operations: \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{**}
+                  \item Floor division: \texttt{//} (\textbf{rounds down} towards negative infinity)
+                  \item Modulus: \texttt{\%} (the result holds the \textbf{same sign as the divisor})
+              \end{itemize}
+        \item Relational Operators
+              \begin{itemize}
+                  \item Compare values and get boolean: \texttt{==}, \texttt{!=}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}
+                  \item Chained comparisons are supported in Python (e.g., \texttt{a < b < c} equals \texttt{(a < b) and (b < c)})
+              \end{itemize}
+        \item Logical Operators
+              \begin{itemize}
+                  \item Combine boolean expressions: \texttt{and}, \texttt{or}, \texttt{not} (Short Circuited)
+                  \item Precedence: \texttt{not} > \texttt{and} > \texttt{or} (Using parentheses is recommended)
+              \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Make it Run!}
+    Before coding, you need to know how to run your Python code!
+    \begin{itemize}
+        \item \textbf{VPL on Moodle}
+              \begin{itemize}
+                  \item Important!
+                  \item How you submit your tutorial exercises
+              \end{itemize}
+        \item Interactive Mode in IDLE
+        \item Script Mode in IDLE
+        \item IDEs (e.g. PyCharm, VSCode, etc.)
+        \item Command Line / Terminal
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{VPL on Moodle: Most Important!}
+    \begin{itemize}
+        \item VPL = Virtual Programming Lab
+        \item use \texttt{Edit} page to edit, run and evaluate your code (recommended)
+        \item upload your file in the \texttt{Submission} page
+        \item Demonstration of using VPL
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{IDLE: Interactive and Script Mode}
+    \begin{itemize}
+        \item IDLE = Python's Integrated Development and Learning Environment
+        \item Easy to use and often comes pre-installed with Python Interpreter
+        \item Two modes:
+              \begin{itemize}
+                  \item Interactive Mode (Useful for testing small code snippets)
+                  \item Script Mode (Useful for writing longer programs)
+              \end{itemize}
+        \item Demonstration of using IDLE
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time to Practice!}
+
+    Let's go through the tutorial exercises now!
+    \begin{itemize}
+        \item Hello World
+        \item Printing Patterns
+        \item Calculate the Area of a Triangle
+        \item Time Conversion
+        \item Repeating a Pattern
+        \item MCQs
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask in the chat box or in-person (in later f2f tutorials)
+        \item Post on the course forum on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Wish you all a great semester in COMP1117!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your Tutorial 1 exercises by \textbf{September 26, 23:59}!
+        \item Bonus: \LaTeX \  Source code of the slide available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials}{https://github.com/xtz206/COMP1117-Autumn25-Tutorials}
+    \end{itemize}
+\end{frame}
+
+\end{document}
