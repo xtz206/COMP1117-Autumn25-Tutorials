@@ -1,0 +1,174 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\title{COMP1117 Tutorial 2}
+\author{Yuan Wenxuan}
+% \institute{HKU}
+\date{September 25, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Overview}
+    \begin{itemize}
+        \item Recap and Optional Extensions
+              \begin{itemize}
+                  \item Recap: Containers and their Methods
+                  \item Recap: If-Elif-Else
+                  \item Recap: Expressions in Conditions
+                  \item Optional: Boolean Expressions
+                  \item Optional: Improving Readability
+              \end{itemize}
+        \item Exercises
+        \item Q\&A
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recap: Containers and their Methods}
+    \begin{itemize}
+        \item list: mutable ordered collection
+              \begin{itemize}
+                  \item Methods: \mintinline{python}|list.append()|, \mintinline{python}|list.pop()|, \mintinline{python}|list.sort()|
+                  \item Slicing: \mintinline{python}|list[start:end:step]|
+                  \item Optional: List Comprehension: \mintinline{python}|[x * 2 for x in range(5)]|
+              \end{itemize}
+        \item tuple: immutable ordered collection
+              \begin{itemize}
+                  \item Optional: Tuple Packing and Unpacking \mintinline{python}|a, (b, c) = (1, (2, 4))|
+              \end{itemize}
+        \item dict: mutable collection of key-value pairs
+              \begin{itemize}
+                  \item Methods: \mintinline{python}|dict.keys()|, \mintinline{python}|dict.values()|, \mintinline{python}|dict.items()|
+                  \item Accessing and Modifying values: \mintinline{python}|dict[key]|
+              \end{itemize}
+        \item set: mutable collection of unique elements
+              \begin{itemize}
+                  \item Methods: \mintinline{python}|set.add()|, \mintinline{python}|set.remove()|, \mintinline{python}|set.union()|
+                  \item Access through index not supported
+                  \item Check membership with \mintinline{python}|in|
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Recap: If-Elif-Else}
+    \begin{itemize}
+        \item Conditional Statements
+        \item Different branches of code executed based on conditions
+        \item Syntax Example:
+    \end{itemize}
+
+    \begin{minted}{python}
+    if condition1:
+        ... # Block 1
+    elif condition2:
+        ... # Block 2
+    else:
+        ... # Block 3
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Expressions in Conditions}
+    \begin{itemize}
+        \item Conditions will be evaluated to Boolean values
+        \item Empty Containers, 0, None are considered \mintinline{python}|False|
+              \begin{itemize}
+                  \item Empty containers like: \mintinline{python}|[]| (list), \mintinline{python}|{}| (dict)
+                  \item Empty string: \mintinline{python}|""| (string)
+                  \item For Numeric Types: \mintinline{python}|0| (int), \mintinline{python}|0.0| (float)
+                  \item Special None value: \mintinline{python}|None| (NoneType)
+              \end{itemize}
+        \item Other values are considered \mintinline{python}|True|
+        \item Optional: can be modified through magic method \mintinline{python}|__bool__()|
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Optional: Boolean Expressions}
+    \begin{itemize}
+        \item Ternary Conditional Operators: \mintinline{python}|x if cond else y|
+        \item Useful Boolean functions: \mintinline{python}|all()|, \mintinline{python}|any()|
+        \item Chained Comparisons: \mintinline{python}|a < b < c|
+        \item Short-Circuit Evaluation
+              \begin{itemize}
+                  \item Second operand for \mintinline{python}|and| and \mintinline{python}|or| is evaluated only if necessary
+                  \item Handling off-by-1 errors or avoiding empty values
+                  \item Examples:
+                        \begin{itemize}
+                            \item \mintinline{python}|i == n - 1 or arr[i] == arr[i + 1]|
+                            \item \mintinline{python}|name.strip() or "Anonymous"|
+                        \end{itemize}
+              \end{itemize}
+    \end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Optional: Improving Readability}
+    \begin{itemize}
+        \item Utilize Parentheses, Variables and Guardian sentences
+        \item Example:
+    \end{itemize}
+
+    \begin{minted}{python}
+    def quick_power(base: int, exp: int) -> int:
+        if exp == 0:
+            return 1
+        if base == 0 or base == 1:
+            return base
+
+        temp: int = quick_power(base, exp // 2)
+        if exp % 2 == 0:
+            return temp * temp
+        return temp * temp * base
+    \end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time to Practice!}
+    \begin{itemize}
+        \item MCQs
+        \item Calculate the Average
+        \item Element in a Set
+        \item Dictionary
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask us in person right now
+        \item Post on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your tutorial 2 exercises before \textbf{October 3, 23:59} !
+        \item Don't forget tutorial 1 exercises\\
+              (due on \textbf{TOMORROW September 26, 23:59}) !
+        \item Bonus: \LaTeX \  Source code of the slide available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials}{https://github.com/xtz206/COMP1117-Autumn25-Tutorials}
+    \end{itemize}
+\end{frame}
+
+\end{document}
