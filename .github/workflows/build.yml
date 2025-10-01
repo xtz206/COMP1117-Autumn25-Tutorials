@@ -23,6 +23,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      
+      - name: Install additional packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pygments
 
       - name: Compile ${{ matrix.tutorial.name }}
         uses: xu-cheng/latex-action@v3
@@ -30,6 +35,11 @@ jobs:
           root_file: ${{ matrix.tutorial.path }}
           compiler: pdflatex
           args: -shell-escape -interaction=nonstopmode
+          pre_compile: |
+            tlmgr update --self
+            tlmgr install minted fvextra upquote
+          post_compile: |
+            echo "PDF compiled successfully"
 
       - name: Rename PDF
         run: |
