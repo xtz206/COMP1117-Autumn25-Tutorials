@@ -1,0 +1,198 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\title{COMP1117 Tutorial 3}
+\author{Yuan Wenxuan}
+% \institute{HKU}
+\date{October 2, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Overview}
+    Hope you enjoyed the holiday!
+
+    \begin{itemize}
+        \item Recap and Extensions
+        \item Exercises
+        \item Q\&A
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Loops and Control Flow}
+    \begin{itemize}
+        \item \mintinline{python}|for| loop: iterate over a \mintinline{python3}|Iterable| (e.g., list, tuple, dict, set, str)
+              \begin{minted}{python}
+for variable in iterable:
+    ... # code block
+              \end{minted}
+        \item \mintinline{python}|while| loop: iterate while a condition is True
+              \begin{minted}{python}
+while condition:
+    ... # code block
+              \end{minted}
+        \item \mintinline{python}|break|: exit the nearest enclosing loop
+        \item \mintinline{python}|continue|: skip the current iteration and continue loop
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Word Splitter as Control Flow Example}
+    \begin{itemize}
+        \item Example: Processing text input with \mintinline{python}|break| and \mintinline{python}|continue|
+    \end{itemize}
+
+    \begin{minted}{python}
+    text = "Hello, world! How are you?"
+    words = []
+    curr = ""
+    for char in text:
+        if char in "!":
+            break
+        if char in " ,.?":
+            if curr:
+                words.append(curr)
+                curr = ""
+            continue
+        curr += char
+    print(words)  # ['Hello', 'world']
+    \end{minted}
+
+    \begin{itemize}
+        \item \mintinline{python}|break|: exits loop when \mintinline{python}|'!'| is encountered
+        \item \mintinline{python}|continue|: skips to next iteration for punctuation/spaces
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Nested Loops, Range and Enumerate }
+    \begin{itemize}
+        \item Nested Loops: loops inside loops
+              \begin{itemize}
+                  \item Inner loop completes all iterations for each iteration of outer loop
+                  \item Commonly used for multi-dimensional data (e.g., 2D lists)
+                  \item \textbf{NOTE}: Avoid excessive nesting for readability
+              \end{itemize}
+        \item \mintinline{python}|range()|: generate a sequence of numbers
+              \begin{itemize}
+                  \item \mintinline{python}|range(stop)|: from 0 to (stop-1)
+                  \item \mintinline{python}|range(start, stop)|: from start to (stop-1)
+                  \item \mintinline{python}|range(start, stop, step)|: from start to (stop-1) with step
+                  \item Useful for looping a specific number of times or over indices
+              \end{itemize}
+        \item \mintinline{python}|enumerate(iterable, start=0)|: iterate with index
+              \begin{itemize}
+                  \item Returns pairs of (index, value)
+                  \item \mintinline{python}|start| parameter sets starting index
+                  \item Useful for tracking position in loops
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Range and Enumerate Example}
+    \begin{minted}{python}
+    for i in range(3):  # 0, 1, 2
+        for j in range(2):  # 0, 1
+            print(array[i][j])
+    
+    for index, value in enumerate("abc", start=1):
+        print(index, value)
+    # (1, 'a'), (2, 'b'), (3, 'c')
+
+    for a, b in zip([1, 2, 3], ['x', 'y', 'z']):
+        print(a, b)
+    # (1, 'x'), (2, 'y'), (3, 'z')
+
+    for char in reversed("abc"):
+        print(char)
+    # 'c', 'b', 'a'
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Extension: While-Else and For-Else}
+    \begin{itemize}
+        \item \mintinline{python}|else| block after \mintinline{python}|for| or \mintinline{python}|while|
+        \item Executes once when loop completes all iterations normally (not terminated by \mintinline{python}|break|)
+        \item Useful for search loops to check if item was found
+    \end{itemize}
+
+    \begin{minted}{python}
+    for item in iterable:
+        if condition(item):
+            break  # exit loop if condition met
+    else:
+        print("Item not found")  # if no break occurred
+    \end{minted}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Extension: Iterable}
+    \begin{itemize}
+        \item \mintinline{python}|Iterable|: An object capable of returning value one at a time
+        \item Examples: \mintinline{python}|list|, \mintinline{python}|tuple|, \mintinline{python}|dict|, \mintinline{python}|set|, \mintinline{python}|str|
+        \item Many built-in functions return iterables
+              \begin{itemize}
+                  \item previously mentioned: \mintinline{python}|range()|, \mintinline{python}|enumerate()|
+                  \item pipeline functions: \mintinline{python}|sorted()|, \mintinline{python}|reversed()|, \mintinline{python}|map()|
+                  \item \mintinline{python}|open()| returns a file object (iterable over lines)
+              \end{itemize}
+        \item Can be used in \mintinline{python}|for| loops and utility functions
+              \begin{itemize}
+                  \item collect iterable items \mintinline{python}|list()|, \mintinline{python}|tuple()|, \mintinline{python}|set()|, \mintinline{python}|dict()|
+                  \item other utilities: \mintinline{python}|sum()|, \mintinline{python}|min()|, \mintinline{python}|max()|
+              \end{itemize}
+
+
+        \item Custom Iterable: define \mintinline{python}|__iter__()| method returning an iterator
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time to Practice!}
+    \begin{itemize}
+        \item MCQs
+        \item Ticket Price Calculator
+        \item Simple Grader
+        \item Leap Year Checker
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask us in person right now
+        \item Post on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your tutorial 3 exercises before \textbf{October 10, 23:59} !
+        \item Don't forget tutorial 2 exercises\\
+              (due on \textbf{TOMORROW October 3, 23:59}) !
+        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+    \end{itemize}
+\end{frame}
+
+\end{document}
