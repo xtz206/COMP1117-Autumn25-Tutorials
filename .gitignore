@@ -16,5 +16,9 @@
 *.synctex.gz
 _minted/
 
+### Temporary Files ###
+**/tmp/
+**/temp/
+
 
 
