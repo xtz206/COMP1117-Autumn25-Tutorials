@@ -20,6 +20,8 @@
 \end{frame}
 
 \section{Recap and Extensions}
+\subsection{Recap: Range and List Comprehension}
+
 \begin{frame}
     \frametitle{Recap Lecture: Iterating Range}
     \begin{itemize}
@@ -43,8 +45,8 @@
         \item Syntax: \mintinline{python}|[expression for item in iterable <if condition>]|
         \item Example: Create a list of squares of even numbers from 0 to 9
               \begin{minted}{python}
-squares_of_even = [x**2 for x in range(10) if x % 2 == 0]
-print(squares_of_even)  # Output: [0, 4, 16, 36, 64]
+squares_of_even = [x**2 for x in range(8) if x % 2 == 0]
+print(squares_of_even)  # Output: [0, 4, 16, 36]
               \end{minted}
         \item Equivalent to:
               \begin{minted}{python}
@@ -56,8 +58,10 @@ for x in range(10):
     \end{itemize}
 \end{frame}
 
+\subsection{Extension: Other Comprehension (Optional)}
+
 \begin{frame}[fragile]
-    \frametitle{Recap Tutorial: Other Comprehensions (Optional)}
+    \frametitle{Extension: Other Comprehensions (Optional)}
     \begin{itemize}
         \item Generator Comprehension: Use parentheses instead of brackets
               \begin{minted}{python}
@@ -72,12 +76,13 @@ print(squares_set)  # Output: {0, 64, 4, 36, 16}
               \end{minted}
         \item Dictionary Comprehension: Use curly braces with key-value pairs
               \begin{minted}{python}
-squares_dict = {x: x**2 for x in range(5) if x % 2 == 0}
-print(squares_dict)  # Output: {0: 0, 2: 4}
+squares_dict = {x: x**2 for x in range(3)}
+print(squares_dict)  # Output: {0: 0, 1: 1, 2: 4}
               \end{minted}
     \end{itemize}
 \end{frame}
 
+\subsection{Extension: Iterables and Iterators (Optional)}
 \begin{frame}
     \frametitle{Recap Tutorial: Iterable (Optional)}
     \begin{itemize}
@@ -109,6 +114,7 @@ print(next(it))  # Output: 2
 print(next(it))  # Output: 3
 print(next(it))  # Raises StopIteration
               \end{minted}
+        \item Custom Iterator: define \mintinline{python}|__iter__()| and \mintinline{python}|__next__()| methods
     \end{itemize}
 \end{frame}
 
@@ -205,7 +211,9 @@ with open("data.txt") as file:
         \item D. \texttt{0 1 2 3 4}
     \end{itemize}
 
-    Explanation: \mintinline{python}|range(5)| yields \mintinline{python}|0..4|, and
+    Explanation:
+
+    \mintinline{python}|range(5)| yields \mintinline{python}|0..4|, and
     \mintinline{python}|print()| uses option \mintinline{python}|end=','|.
 \end{frame}
 
@@ -353,7 +361,10 @@ with open("data.txt") as file:
         \item \alert{D. \texttt{1 3 5 7 9 11}}
     \end{itemize}
 
-    Explanation: \mintinline{python}|i| starts at 1 and increases by 2 while \mintinline{python}|i < 12|.
+    Explanation:
+
+    \mintinline{python}|i| starts at 1
+    and increases by 2 while \mintinline{python}|i < 12|.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -386,8 +397,10 @@ with open("data.txt") as file:
 
     Explanation:
 
-    \mintinline{python}|step| is -1 negative and \mintinline{python}|start| < \mintinline{python}|stop|,
-    so the constraints are not satisfied, \mintinline{python}|range()| produces an empty sequence.
+    \mintinline{python}|step| is -1 negative and
+    \mintinline{python}|start| < \mintinline{python}|stop|,
+    so the constraints are not satisfied,
+    \mintinline{python}|range()| produces an empty sequence.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -611,9 +624,11 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
 
     \begin{tabular}{|c|c|}
         \hline
-        Input & Output           \\ \hline
-        \makecell[tl]{\texttt{5} \\ \texttt{8} \\ \texttt{4} \\ \texttt{-5} \\ \texttt{0}} & \makecell[tl]{\texttt{sum = 12} \\ \texttt{min = -5}} \\ \hline
-        \makecell[tl]{\texttt{3} \\ \texttt{15} \\ \texttt{0}} & \makecell[tl]{\texttt{sum = 18} \\ \texttt{min = 3}} \\ \hline
+        Input & Output                          \\ \hline
+        \makecell[tl]{\texttt{5}                \\ \texttt{8} \\ \texttt{4} \\ \texttt{-5} \\ \texttt{0}}
+              & \makecell[tl]{\texttt{sum = 12} \\ \texttt{min = -5}} \\ \hline
+        \makecell[tl]{\texttt{3}                \\ \texttt{15} \\ \texttt{0}}
+              & \makecell[tl]{\texttt{sum = 18} \\ \texttt{min = 3}} \\ \hline
     \end{tabular}
 \end{frame}
 \begin{frame}[fragile]
@@ -663,9 +678,10 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
 
     \begin{tabular}{|c|c|}
         \hline
-        Input & Output            \\ \hline
-        \makecell[tl]{\texttt{28} \\ \texttt{N}} & \makecell[tl]{\texttt{True}} \\ \hline
-        \makecell[tl]{\texttt{4}  \\ \texttt{Y} \\ \texttt{5} \\ \texttt{N}} & \makecell[tl]{\texttt{False} \\ \texttt{False}} \\ \hline
+        Input & Output               \\ \hline
+        \makecell[tl]{\texttt{28}    \\ \texttt{N}} & \makecell[tl]{\texttt{True}} \\ \hline
+        \makecell[tl]{\texttt{4}     \\ \texttt{Y} \\ \texttt{5} \\ \texttt{N}} &
+        \makecell[tl]{\texttt{False} \\ \texttt{False}} \\ \hline
     \end{tabular}
 \end{frame}
 \begin{frame}[fragile]
