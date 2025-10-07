@@ -20,8 +20,29 @@
 \end{frame}
 
 \section{Recap and Extensions}
-\subsection{Recap: Range and List Comprehension}
+\subsection{Recap: f-strings}
+\begin{frame}
+    \frametitle{Recap Lecture: format strings}
 
+    \begin{itemize}
+        \item f-string: string prefixed with \mintinline{python}|f|
+        \item Expressions inside curly braces \mintinline{python}|{expr}| will be evaluated
+              and formatted using \mintinline{python}|str()|
+        \item Example: \mintinline{python}|name = "Alice"; age = 30; f"{name} is {age} years old."|
+        \item Double curly braces \mintinline{python}|{{}}| to include a literal brace
+        \item Format Specifiers: \mintinline{python}|{value:format_spec}|
+              \begin{itemize}
+                  \item Alignment: \mintinline{python}|<| (left), \mintinline{python}|>| (right), \mintinline{python}|^| (center)
+                  \item Width: minimum number of characters
+                  \item Precision: for \mintinline{python}|float|, number of digits after decimal point
+              \end{itemize}
+        \item Example with format specifiers:
+              \mintinline{python}|value = 3.14159; f"{value:_<10.2f}"| \\
+              is equivalent to \mintinline{python}|'3.14______'|
+    \end{itemize}
+\end{frame}
+
+\subsection{Recap: Range}
 \begin{frame}
     \frametitle{Recap Lecture: Iterating Range}
     \begin{itemize}
@@ -38,12 +59,13 @@
     \end{itemize}
 \end{frame}
 
+\subsection{Recap: List Comprehension}
 \begin{frame}[fragile]
     \frametitle{Recap Lecture: List Comprehension}
     \begin{itemize}
         \item Concise way to create lists
         \item Syntax: \mintinline{python}|[expression for item in iterable <if condition>]|
-        \item Example: Create a list of squares of even numbers from 0 to 9
+        \item Example: Create a list of squares of even numbers from 0 to 7
               \begin{minted}{python}
 squares_of_even = [x**2 for x in range(8) if x % 2 == 0]
 print(squares_of_even)  # Output: [0, 4, 16, 36]
@@ -51,7 +73,7 @@ print(squares_of_even)  # Output: [0, 4, 16, 36]
         \item Equivalent to:
               \begin{minted}{python}
 squares_of_even = []
-for x in range(10):
+for x in range(8):
     if x % 2 == 0:
         squares_of_even.append(x**2)
               \end{minted}
@@ -151,17 +173,12 @@ num_list = list(range(1, 10**6))
               \end{itemize}
         \item Can be chained to form a processing pipeline
               \begin{minted}{python}
-with open("data.txt") as file:
-    for line in map(
-        str.upper,  # convert to uppercase
-        filter(
-            lambda x: x.strip(),  # remove empty lines
-            (l.strip() for l in file),  # remove '\n'
-        ),
+    for num in filter(
+        lambda x: x % 2 == 0, 
+        map(int, input().split())
     ):
-        print(line)
-        # Prints non-empty lines in uppercase
-
+        print(num)
+        # gets all the even numbers from input
               \end{minted}
     \end{itemize}
 \end{frame}
@@ -541,25 +558,39 @@ with open("data.txt") as file:
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: Looping a Dictionary Solution}
-    Solution:
+
+    Define the dictionary:
     \begin{minted}{python}
-card = {
-    'a':1, 'b':2, 'c':3, '4':4, '5':5, '6':6, '7':7,
-    '8':8, '9':9, '10':10, 'o':11, 'p':12, 'q':13
-}
-for key in card:
-    print(f"{key}-{card[key]}")
+    card = {
+        'a':1, 'b':2, 'c':3, '4':4, '5':5, '6':6, '7':7,
+        '8':8, '9':9, '10':10, 'o':11, 'p':12, 'q':13
+    }
     \end{minted}
 
+    Peter's Solution:
+    \begin{minted}{python}
+    for key in card:
+        print(f"{key}-{card[key]}")
+    \end{minted}
+
+    Cyrus' Solution:
+    \begin{minted}{python}
+    for key in card:
+        print(i + '-' + str(card[key]))
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Looping a Dictionary Alternative}
     (Optional) Alternative using \mintinline{python}|dict.items()| and \mintinline{python}|sep='-'|:
     \begin{minted}{python}
-for key, value in card.items():
-    print(key, value, sep='-')
+    for key, value in card.items():
+        print(key, value, sep='-')
     \end{minted}
 
-    (Optional) One-Liner:
+    (Optional) One-Liner using generator comprehension and unpacking:
     \begin{minted}{python}
-print(*(f"{key}-{card[key]}" for key in card), sep='\n')
+    print(*(f"{k}-{card[k]}" for k in card), sep='\n')
     \end{minted}
 \end{frame}
 
@@ -586,7 +617,7 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
 \begin{frame}[fragile]
     \frametitle{Practice Time: Count the digits Solution}
 
-    Solution:
+    Peter's Solution:
     \begin{minted}{python}
     count = 0
     for char in input():
@@ -595,16 +626,16 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
     print(count)
     \end{minted}
 
-    (Optional) Alternative using \mintinline{python}|str.isdigit()|:
+    Cyrus' Solution:
     \begin{minted}{python}
+    string = input()
     count = 0
-    for char in input():
-        if char.isdigit():
+    for i in string:
+        if (i >= '0' and i <= '9'):
             count += 1
     print(count)
     \end{minted}
-
-    (Optional) One-Liner:
+    (Optional) One-Liner using \mintinline{python}|sum()| and \mintinline{python}|str.isdigit()|:
     \begin{minted}{python}
     print(sum(1 for c in input() if c.isdigit()))
     \end{minted}
@@ -634,26 +665,56 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
 \begin{frame}[fragile]
     \frametitle{Practice Time: Sum and Min Solution}
 
-    Solution:
+    Peter's Solution:
     \begin{minted}{python}
-    n = int(input())
-    s = 0 # sum
-    m = n # min
-    while n != 0:
+    # Avoid overshadowing built-in sum() and min()
+    s = 0
+    m = None
+    while True:
+        n = int(input())
+        if n == 0:
+            break
         s += n
-        if n < m:
+        if m is None or n < m: # use is to check None
             m = n
-    print(f"sum={s}")
-    print(f"min={m}")
+    print(f"sum = {s}")
+    print(f"min = {m}")
     \end{minted}
+
+    Cyrus' Solution on next slide.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Sum and Min Solution (cont.)}
+
+    Cyrus' Solution:
+    \begin{minted}{python}
+    sum = 0
+    n = int(input())
+    min = n
+    while (n != 0):
+        if (min > n):
+            min = n
+        sum += n
+        n = int(input())
+    print("sum =",sum)
+    print("min =",min)
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Sum and Min Alternative}
 
     (Optional) Alternative using syntactic sugars (Python 3.8+):
     \begin{minted}{python}
-    s = 0, m = float("inf")
+    s = 0
+    m = float("inf")
     while (n := int(input())) != 0:
         s += n
+        # ternary expression (see Tutorial 2)
         m = n if n < m else m
-    print(f"sum={s}\nmin={m}")
+    print(f"sum = {s}")
+    print(f"min = {m}")
     \end{minted}
 \end{frame}
 
@@ -672,7 +733,8 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
     For example, 28 is a perfect number because the sum of
     its factors excluding itself $1+2+4+7+14 = 28$.
 
-    Definition: \href{https://en.wikipedia.org/wiki/Perfect_number}{https://en.wikipedia.org/wiki/Perfect\_number}
+    Definition: \href{https://en.wikipedia.org/wiki/Perfect_number}
+    {https://en.wikipedia.org/wiki/Perfect\_number}
 
     Examples:
 
@@ -687,7 +749,7 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
 \begin{frame}[fragile]
     \frametitle{Practice Time: Check perfect number Solution}
 
-    Solution:
+    Peter's Solution:
     \begin{minted}{python}
     while True:
         n = int(input())
@@ -695,19 +757,68 @@ print(*(f"{key}-{card[key]}" for key in card), sep='\n')
         for i in range(1, n):
             if n % i == 0:
                 s += i
-        print(s == N)
+        print(s == n)
         if input() != 'Y':
             break
     \end{minted}
+
+    Cyrus' Solution on next slide.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Check perfect number Solution (cont.)}
+
+    Cyrus' Solution:
+    \begin{minted}{python}
+    import math
+
+    def perfectNumber(n):
+        sum = 1
+        for i in range(2, math.ceil(n/2)+1):
+            if n%i == 0:
+                sum += i
+        print(sum == n)
+
+    cont = "Y"
+    while (cont == 'Y'):
+        n = int(input())
+        perfectNumber(n)
+        cont = input()
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Check perfect number Alternative}
 
     (Optional) Alternative using generator comprehension and \mintinline{python}|sum()|:
     \begin{minted}{python}
     while True:
         n = int(input())
-        # One-Liner to check perfect number
-        print(sum(i for i in range(1, n) if n % i == 0) == n)
+        # One-Liner to sum factors of n excluding itself
+        s = sum(i for i in range(1, n) if n % i == 0)
+        print(n == s)
         if input() != 'Y':
             break
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Check perfect number Alternative (cont.)}
+    (Optional) Find factor sum of $N$ more efficiently (in $O(\sqrt{N})$ time):
+    \begin{minted}{python}
+    from math import sqrt
+    def factor_sum(n: int) -> int:
+        if n < 2:
+            return 0
+        s = 1  # 1 always factor
+        r = int(sqrt(n))
+        if r * r == n:
+            s += r # add square root once
+        for i in range(2, r):
+            if n % i == 0:
+                # Add complementary factors
+                s += (i + n // i)
+        return s
     \end{minted}
 \end{frame}
 
