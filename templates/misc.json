@@ -1,0 +1,5 @@
+{
+    "nrmd": "\\item Submit your tutorial {index} exercises before \\textbf{{{date} 23:59}}!",
+    "srmd": "\\item Don't forget tutorial {index} exercises\\\\(due on \\textbf{{TOMORROW {date} 23:59}})!",
+    "item": "\\item {value}"
+}
