@@ -1,11 +1,10 @@
 # Template for RELEASE notes
 
-## COMP1117 Computer Programming - Slides for Tutorial N (v0.x.y)
+## COMP1117 Tutorial Slides [N] (v0.x.y)
 
 **Release Date**: [DATE]
 
 This release includes the LaTeX Beamer slides for Tutorial [N] of COMP1117 Python Programming.
-Slides of previous weeks are also included for completeness.
 
 **Contents**:
 
