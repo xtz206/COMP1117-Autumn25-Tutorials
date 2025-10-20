@@ -21,62 +21,181 @@
 \end{frame}
 
 \section{Recap and Extensions}
-\subsection{Recap: TODO1RC}
-\begin{frame}
-    \frametitle{Recap: TODO1RC}
+\subsection{Recap: Defining and Calling Functions}
+\begin{frame}[fragile]
+    \frametitle{Recap: Defining and Calling Functions}
     \begin{itemize}
-        % TODO: Recap items
-        \item
+        \item Defining: use \python{def} keyword to define a function
+        \item Calling: function name followed by parentheses, e.g. \python{func(arg)}
+        \item Parameters: variables listed when defining function
+        \item \python{return}: use \python{return} keyword to return a value from the function
     \end{itemize}
+    \begin{minted}{python}
+    def function_name(arg1, arg2, ..., argN):
+        ... # code block
+        return value  # optional
+        # None is returned if no return statement
+    \end{minted}
 \end{frame}
-\subsection{Recap: TODO2RC}
+
+\subsection{Recap: Local, Global and Return}
 \begin{frame}
-    \frametitle{Recap: TODO2RC}
+    \frametitle{Recap: Local, Global and Return}
     \begin{itemize}
-        % TODO: Recap items
-        \item
-    \end{itemize}
-\end{frame}
-\subsection{Recap: TODO3RC}
-\begin{frame}
-    \frametitle{Recap: TODO3RC}
-    \begin{itemize}
-        % TODO: Recap items
-        \item
+        \item Local Variable: Defined inside a function
+              \begin{itemize}
+                  \item Accessible only within that function
+                  \item Disappears after function finished execution
+              \end{itemize}
+        \item Global Variable: Defined outside any function
+              \begin{itemize}
+                  \item Accessible within or outside functions
+                  \item Use \python{global} keyword to modify inside functions
+                  \item Could be \textbf{shadowed} by local variables with the same name
+              \end{itemize}
+        \item Returning Values: Passed back to the caller using \python{return}
+              \begin{itemize}
+                  \item Multiple Return Values: use tuples to return multiple values
+                        \python{return value1, value2, value3}
+                  \item Useful combined with auto packing and unpacking
+                        \python{value1, value2 = function_name()}
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
-\subsection{Extension: TODO1ET}
+\subsection{Recap: Default, Positional and Keyword Arguments}
 \begin{frame}
-    \frametitle{Extension: TODO1ET}
+    \frametitle{Recap: Default, Positional and Keyword Arguments}
     \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Positional Arguments: Passed based on their position
+              \begin{itemize}
+                  \item Order matters
+                  \item Example: \python{func(10, 20)} passes 10 to first parameter, 20 to second
+              \end{itemize}
+        \item Keyword Arguments: Passed by explicitly naming parameters
+              \begin{itemize}
+                  \item Order does not matter
+                  \item Example: \python{func(b=20, a=10)} passes 10 to \python{a}, 20 to \python{b}
+              \end{itemize}
+        \item Default Arguments: Parameters with default values
+              \begin{itemize}
+                  \item Can be omitted when calling the function
+                  \item Example: \python{def func(a, b=5)} allows calling \python{func(10)} with \python{b} defaulting to 5
+                  \item The default value will only be evaluated once at the definition
+                  \item Use immutable types or \python{None} as default to avoid unexpected behavior
+              \end{itemize}
     \end{itemize}
 \end{frame}
-\subsection{Extension: TODO2ET}
+
+\subsection{Recap: Lambda and Built-in Functions}
 \begin{frame}
-    \frametitle{Extension: TODO2ET}
+    \frametitle{Recap: Lambda and Built-in Functions}
     \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Lambda Functions: Small anonymous functions defined with \python{lambda} keyword
+              \begin{itemize}
+                  \item Syntax: \python{lambda arguments: expression}
+                  \item Can have any number of arguments but only one expression
+                  \item Commonly used for short, throwaway functions
+              \end{itemize}
+        \item Built-in Functions: Predefined functions provided by Python
+              \begin{itemize}
+                  \item Examples: \python{len()}, \python{max()}, \python{min()}, \python{sum()}, \python{sorted()}
+                  \item Used for common operations on data structures
+              \end{itemize}
+        \item Building Pipelines: Combine multiple functions for data processing
+              \begin{itemize}
+                  \item Example: \python{sorted(map(lambda x: x**2, nums))}
+                  \item Applies \python{lambda} to each item in \python{nums}, then sorts the results
+                  \item You may view Tutorial 4 Extension for more details
+              \end{itemize}
     \end{itemize}
 \end{frame}
-\subsection{Extension: TODO3ET}
-\begin{frame}
-    \frametitle{Extension: TODO3ET}
+
+\subsection{Extension: Generator and Yield}
+\begin{frame}[fragile]
+    \frametitle{Extension: Generator and Yield}
     \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Generator: A special type of iterator that generates values on-the-fly using \python{yield} keyword
+        \item Syntax: Define a function with \python{yield} instead of \python{return}
+        \item Benefits:
+              \begin{itemize}
+                  \item Memory Efficient: Only calculates one value at a time
+                  \item Lazy Evaluation: Values are produced only when requested
+              \end{itemize}
+        \item Example:
+              \begin{minted}{python}
+    def count_up_to(n):
+        count = 1
+        while count <= n:
+            yield count
+            count += 1
+        return # Stops iteration
+    print(list(count_up_to(5)))
+    # Output: [1, 2, 3, 4, 5]
+    \end{minted}
     \end{itemize}
 \end{frame}
-\subsection{Extension: TODO4ET}
-\begin{frame}
-    \frametitle{Extension: TODO4ET}
+\subsection{Extension: Closure and Higher-Order Functions}
+\begin{frame}[fragile]
+    \frametitle{Extension: Closure and Higher-Order Functions}
     \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Higher-Order Function: A function that takes other functions as arguments or returns a function as its result
+              \begin{itemize}
+                  \item Examples: \python{map()}, \python{filter()}, \python{reduce()}
+                  \item Enables functional programming techniques
+              \end{itemize}
+        \item Closure: A function that captures variables from its enclosing scope
+              \begin{itemize}
+                  \item Allows inner function to remember the state of outer function's variables
+                  \item Example:
+                        \begin{minted}{python}
+    def make_multiplier(factor):
+        def multiply(x):
+            return x * factor
+        return multiply
+    double = make_multiplier(2)
+    print(double(5))  # Output: 10
+                        \end{minted}
+              \end{itemize}
     \end{itemize}
+\end{frame}
+\subsection{Extension: Decorators}
+\begin{frame}[fragile]
+    \frametitle{Extension: Decorators}
+    \begin{itemize}
+        \item Decorator: A special type of high-order function that modifies the behavior of another function
+        \item Syntax: Use \python{@decorator_name} above the function definition
+        \item Purpose:
+              \begin{itemize}
+                  \item Code Reusability: Apply the same functionality to multiple functions
+                  \item Separation of Concerns: Keep core logic separate from auxiliary features
+              \end{itemize}
+        \item Example: Please see the next slide
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Extension: Decorators Example}
+    \small
+    \begin{minted}{python}
+    import time
+    def timeit(func):
+        def wrapper(*args, **kwargs):
+            start = time.time()
+            result = func(*args, **kwargs)
+            print("Used time:", time.time() - start)
+            return result
+        return wrapper
+    
+    @timeit
+    def fib(n):
+        if n <= 1:
+            return n
+        a, b = 0, 1
+        for _ in range(n - 1):
+            a, b = b, a + b
+        return b
+    print(fib(10))  # Output: 55 and time taken
+    \end{minted}
 \end{frame}
 
 \section{Practice Time!}
