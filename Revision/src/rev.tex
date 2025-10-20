@@ -19,6 +19,257 @@
     \tableofcontents
 }
 
+\section{Recapping of Key Concepts}
+\subsection{Recapping: Basic Syntax and Data Types}
+\begin{frame}
+    \frametitle{Recapping: Data Types}
+    \begin{itemize}
+        \item Primitive Data Types
+              \begin{itemize}
+                  \item Integer (\python{int}): Whole numbers, e.g., \python{42}
+                  \item Floating-point number (\python{float}): Decimal numbers, e.g., \python{3.14}
+                  \item String (\python{str}): Text enclosed in quotes, e.g., \python{"Hello, World!"}
+                  \item Boolean (\python{bool}): Represents truth values, either \python{True} or \python{False}
+              \end{itemize}
+        \item String Literals
+              \begin{itemize}
+                  \item Single quotes: \python{'Hello'}
+                  \item Double quotes: \python{"Hello"}
+                  \item Triple quotes (for multi-line strings):
+                        \python{'''Hello'''} or \python{"""Hello"""}
+                  \item Escape characters: \python{\n} (newline), \python{\t} (tab), \python{\\} (backslash), etc.
+                  \item r-strings (raw strings): \python{r"C:\path\to\file"}
+                  \item f-strings (formatted strings): \python{f"Hello, {name}!"}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recapping: Type Casting and Input}
+    \begin{itemize}
+        \item Type Casting
+              \begin{itemize}
+                  \item Convert one data type to another
+                  \item Functions: \python{int()}, \python{float()}, \python{str()}, \python{bool()}
+                  \item Example: \python{int("42")} converts the string "42" to the integer 42
+              \end{itemize}
+        \item Input
+              \begin{itemize}
+                  \item Get user input from the console
+                  \item Function: \python{input()}
+                  \item Note: Input is always treated as a string, so type casting may be needed
+                  \item Example: \python{age = int(input("Enter your age: "))}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recapping: Variables and Naming Rules}
+    \begin{itemize}
+        \item Variables
+              \begin{itemize}
+                  \item Named storage for data
+                  \item Created by assignment: \python{variable_name = value}
+                  \item Example: \python{x = 10}, \python{name = "Alice"}
+              \end{itemize}
+        \item Naming Rules
+              \begin{itemize}
+                  \item Must start with a letter (a-z, A-Z) or an underscore (\_)
+                  \item Can contain letters, digits (0-9), and underscores
+                  \item Case-sensitive: \python{myVar} and \python{myvar} are different
+                  \item Cannot be a reserved keyword (e.g., \python{if}, \python{for}, etc.)
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Recapping: Containers, Operators and Expressions}
+\begin{frame}
+    \frametitle{Recapping: Containers and their Methods}
+    \begin{itemize}
+        \item \python{list}: mutable ordered collection
+              \begin{itemize}
+                  \item Methods: \python{list.append()}, \python{list.pop()}, \python{list.sort()}
+                  \item Slicing: \python{list[start:end:step]}
+                  \item List Comprehension: \python{[x * 2 for x in range(5)]}
+              \end{itemize}
+        \item \python{tuple}: immutable ordered collection
+              \begin{itemize}
+                  \item Tuple Packing and Unpacking \python{a, (b, c) = (1, (2, 4))}
+              \end{itemize}
+        \item \python{dict}: mutable collection of key-value pairs
+              \begin{itemize}
+                  \item Methods: \python{dict.keys()}, \python{dict.values()}, \python{dict.items()}
+                  \item Accessing and Modifying values: \python{dict[key]}
+              \end{itemize}
+        \item \python{set}: mutable collection of unique elements
+              \begin{itemize}
+                  \item Methods: \python{set.add()}, \python{set.remove()}, \python{set.union()}
+                  \item Access through index not supported
+                  \item Check membership with \python{in}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recapping: Operators and Expressions}
+    \begin{itemize}
+        \item Statements vs Expressions
+              \begin{itemize}
+                  \item Statement: Performs an action (e.g., assignment, control flow)
+                  \item Expression: Evaluates to a value (e.g., arithmetic operations)
+                  \item In short: Statements do something, expressions are something
+              \end{itemize}
+        \item Arithmetic Operators
+              \begin{itemize}
+                  \item Basic math operations: \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{**}
+                  \item Floor division: \texttt{//} (\textbf{rounds down} towards negative infinity)
+                  \item Modulus: \texttt{\%} (the result holds the \textbf{same sign as the divisor})
+              \end{itemize}
+        \item Relational Operators
+              \begin{itemize}
+                  \item Compare values and get boolean: \texttt{==}, \texttt{!=}, \texttt{<}, \texttt{>}, \texttt{<=}, \texttt{>=}
+                  \item Chained comparisons are supported in Python
+                        (e.g., \texttt{a < b < c} equals \texttt{(a < b) and (b < c)})
+              \end{itemize}
+        \item Logical Operators
+              \begin{itemize}
+                  \item Combine boolean expressions: \texttt{and}, \texttt{or}, \texttt{not} (Short Circuited)
+                  \item Precedence: \texttt{not} > \texttt{and} > \texttt{or} (Using parentheses is recommended)
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Recapping: Control Flow}
+\begin{frame}[fragile]
+    \frametitle{Recapping: If-Elif-Else}
+    \begin{itemize}
+        \item Conditional Statements
+        \item Different branches of code executed based on conditions
+        \item Conditions will be evaluated to Boolean values
+        \item Empty Containers, 0, None are considered \python{False}
+              \begin{itemize}
+                  \item Empty containers like: \python{[]} (list), \python{{}} (dict)
+                  \item Empty string: \python{""} (string)
+                  \item For Numeric Types: \python{0} (int), \python{0.0} (float)
+                  \item Special None value: \python{None} (NoneType)
+              \end{itemize}
+        \item Other values are considered \python{True}
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Recapping: Loops and Control Flow}
+    \begin{itemize}
+        \item \python{for} loop: iterate over a sequence
+        \item \python{while} loop: iterate while a condition is True
+        \item \python{break}: exit the nearest enclosing loop
+        \item \python{continue}: skip the current iteration and continue loop
+        \item Nested Loops: loops inside loops
+              \begin{itemize}
+                  \item Inner loop completes all iterations for each iteration of outer loop
+              \end{itemize}
+        \item \python{range}: generate a sequence of numbers
+              \begin{itemize}
+                  \item \python{range(start)}: from 0 to (stop-1)
+                  \item \python{range(start, stop)}: from start to (stop-1)
+                  \item \python{range(start, stop, step)}: iterate with step (cannot be 0)
+                  \item constraint: $(\texttt{stop} - \texttt{start}) \times \texttt{stop} > 0$, otherwise empty sequence
+              \end{itemize}
+        \item \python{enumerate(iterable)}: iterate pairs of (index, value)
+    \end{itemize}
+\end{frame}
+
+\subsection{Recapping: Functions}
+\begin{frame}[fragile]
+    \frametitle{Recap: Defining and Calling Functions}
+    \begin{itemize}
+        \item Defining: use \python{def} keyword to define a function
+        \item Calling: function name followed by parentheses, e.g. \python{func(arg)}
+        \item Parameters: variables listed when defining function
+        \item \python{return}: use \python{return} keyword to return a value from the function
+    \end{itemize}
+    \begin{minted}{python}
+    def function_name(arg1, arg2, ..., argN):
+        ... # code block
+        return value  # optional
+        # None is returned if no return statement
+    \end{minted}
+\end{frame}
+\begin{frame}
+    \frametitle{Recap: Local, Global and Return}
+    \begin{itemize}
+        \item Local Variable: Defined inside a function
+              \begin{itemize}
+                  \item Accessible only within that function
+                  \item Disappears after function finished execution
+              \end{itemize}
+        \item Global Variable: Defined outside any function
+              \begin{itemize}
+                  \item Accessible within or outside functions
+                  \item Use \python{global} keyword to modify inside functions
+                  \item Could be \textbf{shadowed} by local variables with the same name
+              \end{itemize}
+        \item Returning Values: Passed back to the caller using \python{return}
+              \begin{itemize}
+                  \item Multiple Return Values: use tuples to return multiple values
+                        \python{return value1, value2, value3}
+                  \item Useful combined with auto packing and unpacking
+                        \python{value1, value2 = function_name()}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recap: Default, Positional and Keyword Arguments}
+    \begin{itemize}
+        \item Positional Arguments: Passed based on their position
+              \begin{itemize}
+                  \item Order matters
+                  \item Example: \python{func(10, 20)} passes 10 to first parameter, 20 to second
+              \end{itemize}
+        \item Keyword Arguments: Passed by explicitly naming parameters
+              \begin{itemize}
+                  \item Order does not matter
+                  \item Example: \python{func(b=20, a=10)} passes 10 to \python{a}, 20 to \python{b}
+              \end{itemize}
+        \item Default Arguments: Parameters with default values
+              \begin{itemize}
+                  \item Can be omitted when calling the function
+                  \item Example: \python{def func(a, b=5)} allows calling \python{func(10)} with \python{b} defaulting to 5
+                  \item The default value will only be evaluated once at the definition
+                  \item Use immutable types or \python{None} as default to avoid unexpected behavior
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recap: Lambda and Built-in Functions}
+    \begin{itemize}
+        \item Lambda Functions: Small anonymous functions defined with \python{lambda} keyword
+              \begin{itemize}
+                  \item Syntax: \python{lambda arguments: expression}
+                  \item Can have any number of arguments but only one expression
+                  \item Commonly used for short, throwaway functions
+              \end{itemize}
+        \item Built-in Functions: Predefined functions provided by Python
+              \begin{itemize}
+                  \item Examples: \python{len()}, \python{max()}, \python{min()}, \python{sum()}, \python{sorted()}
+                  \item Used for common operations on data structures
+              \end{itemize}
+        \item Building Pipelines: Combine multiple functions for data processing
+              \begin{itemize}
+                  \item Example: \python{sorted(map(lambda x: x**2, nums))}
+                  \item Applies \python{lambda} to each item in \python{nums}, then sorts the results
+                  \item You may view Tutorial 4 Extension for more details
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Practice: MCQs (33 Questions)}
+\begin{frame}
+    \frametitle{Practice: MCQs Overview}
+    \begin{itemize}
+        \item 33 Multiple Choice Questions (MCQs)
+        \item Covering key concepts from previous sections
+        \item Test understanding of Python basics and common pitfalls
+        \item Solutions provided after each question
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{MCQ1}
     What is the output of the following code snippet?
@@ -1123,6 +1374,31 @@
         \item B. \texttt{10}
         \item \alert{C. \texttt{4}}
         \item D. None of the above
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Quenstions?}
+    Any questions so far? Or you find some of the solutions are incorrect?
+    \begin{itemize}
+        \item Feel free to contact me via email!
+        \item Email: \href{mailto:u3629274@connect.hku.hk}
+        \item You may post your question on Ed or Moodle.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Hope you have prepared well for Quiz (\textbf{October 28})!
+        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+              {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
     \end{itemize}
 \end{frame}
 
