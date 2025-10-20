@@ -298,9 +298,10 @@
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3}
-    What is the output of the following code?
+    \begin{small}
+        What is the output of the following code?
 
-    \begin{minted}{python}
+        \begin{minted}{python}
     for i in range(1, 7):
         for j in range(1, 7):
             if i == j:
@@ -308,36 +309,39 @@
             else:
                 print('-', end=' ')
         print()
-    \end{minted}
+        \end{minted}
 
-    \begin{tabular}{cl|cl}
-        A & \texttt{2 4 6 8 10 12} & B & \texttt{2 4 6 8 10 12 14} \\\hline
-        C &
-        \makecell[tl]{
-        \texttt{2 - - - - - }                                      \\
-        \texttt{- 4 - - - - }                                      \\
-        \texttt{- - 6 - - - }                                      \\
-        \texttt{- - - 8 - - }                                      \\
-        \texttt{- - - - 10 - }                                     \\
-        \texttt{- - - - - 12}                                      \\
-        }
-          & D                      &
-        \makecell[tl]{
-        \texttt{2 - - - - - - }                                    \\
-        \texttt{- 4 - - - - - }                                    \\
-        \texttt{- - 6 - - - - }                                    \\
-        \texttt{- - - 8 - - - }                                    \\
-        \texttt{- - - - 10 - - }                                   \\
-        \texttt{- - - - - 12 - }                                   \\
-        \texttt{- - - - - - 14}                                    \\
-        }
-    \end{tabular}
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            A                         & B & C & D \\\hline
+            \texttt{2 4 6 8 10 12}    &
+            \texttt{2 4 6 8 10 12 14} &
+            \makecell[tl]{
+            \texttt{2 - - - - - }                 \\
+            \texttt{- 4 - - - - }                 \\
+            \texttt{- - 6 - - - }                 \\
+            \texttt{- - - 8 - - }                 \\
+            \texttt{- - - - 10 - }                \\
+            \texttt{- - - - - 12}                 \\
+            }                         &
+            \makecell[tl]{
+            \texttt{2 - - - - - - }               \\
+            \texttt{- 4 - - - - - }               \\
+            \texttt{- - 6 - - - - }               \\
+            \texttt{- - - 8 - - - }               \\
+            \texttt{- - - - 10 - - }              \\
+            \texttt{- - - - - 12 - }              \\
+            \texttt{- - - - - - 14}               \\
+            }                                     \\\hline
+        \end{tabular}
+    \end{small}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3 Solution}
-    What is the output of the following code?
+    \begin{small}
+        What is the output of the following code?
 
-    \begin{minted}{python}
+        \begin{minted}{python}
     for i in range(1, 7):
         for j in range(1, 7):
             if i == j:
@@ -345,20 +349,34 @@
             else:
                 print('-', end=' ')
         print()
-    \end{minted}
-    \begin{itemize}
-        \item \alert{C.}
-              \alert{
-                  \makecell[tl]{
-                      \texttt{2 - - - - - }                                              \\
-                      \texttt{- 4 - - - - }                                              \\
-                      \texttt{- - 6 - - - }                                              \\
-                      \texttt{- - - 8 - - }                                              \\
-                      \texttt{- - - - 10 - }                                             \\
-                      \texttt{- - - - - 12}                                              \\
-                  }}
-    \end{itemize}
-    Explanation: Both loops iterates from 1 to 6.
+        \end{minted}
+
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            A                         & B & \alert{C} & D \\\hline
+            \texttt{2 4 6 8 10 12}    &
+            \texttt{2 4 6 8 10 12 14} &
+            \alert{\makecell[tl]{
+            \texttt{2 - - - - - }                         \\
+            \texttt{- 4 - - - - }                         \\
+            \texttt{- - 6 - - - }                         \\
+            \texttt{- - - 8 - - }                         \\
+            \texttt{- - - - 10 - }                        \\
+            \texttt{- - - - - 12}                         \\
+            }}                        &
+            \makecell[tl]{
+            \texttt{2 - - - - - - }                       \\
+            \texttt{- 4 - - - - - }                       \\
+            \texttt{- - 6 - - - - }                       \\
+            \texttt{- - - 8 - - - }                       \\
+            \texttt{- - - - 10 - - }                      \\
+            \texttt{- - - - - 12 - }                      \\
+            \texttt{- - - - - - 14}                       \\
+            }                                             \\\hline
+        \end{tabular}
+
+        Explanation: Both loops iterates from 1 to 6, and \python{print()} will create a newline.
+    \end{small}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ4}
