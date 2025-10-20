@@ -3,6 +3,7 @@
 \usecolortheme{default}
 
 \usepackage{minted}
+\usepackage{makecell}
 
 \newcommand{\python}[1]{\mintinline{python}|#1|}
 
@@ -83,10 +84,10 @@
     \frametitle{Time to Practice!}
     \begin{itemize}
         \item MCQs
-        \item TODO1EX
-        \item TODO2EX
-        \item TODO3EX
-        \item TODO4EX
+        \item Inverted Triangle
+        \item Special Triangle
+        \item Sum of List
+        \item Set of Numbers
     \end{itemize}
 \end{frame}
 
@@ -94,264 +95,510 @@
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ1}
     What is the output of the following code?
-    % TODO: fill in mcq 1 code
     \begin{minted}{python}
+    fruits = ["apple", "banana", "cherry"]
+    for x in fruits:
+    if x == "banana":
+        break
+    print(x, end=' ')    
     \end{minted}
-    % TODO: fill in mcq 1 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{apple banana cherry}
+        \item B. \texttt{apple banana}
+        \item C. \texttt{apple }
+        \item D. None of the above
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ1 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 1 code
+
     \begin{minted}{python}
+    fruits = ["apple", "banana", "cherry"]
+    for x in fruits:
+    if x == "banana":
+        break
+    print(x, end=' ')    
     \end{minted}
-    % TODO: fill in mcq 1 options and alert correct one
+
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{apple banana cherry}
+        \item B. \texttt{apple banana}
+        \item \alert{C. \texttt{apple }}
+        \item D. None of the above
     \end{itemize}
 
     Explanation:
-    % TODO: fill in mcq 1 explanation
+
+    When \python{"banana"} is met in the iteration,
+    the \python{break} statement exits the loop immediately.
+    Only \python{"apple"} is printed before the loop ends.
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ2}
     What is the output of the following code?
-    % TODO: fill in mcq 2 code
+
     \begin{minted}{python}
+    fruits = {'a': "apple", 'b': "banana", 'c': "cherry"}
+    for x in fruits:
+        if x == "banana":
+            break
+        print(x, end=' ')
     \end{minted}
-    % TODO: fill in mcq 2 options
+
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{a b c }
+        \item B. \texttt{apple banana cherry }
+        \item C. \texttt{a }
+        \item D. \texttt{apple }
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ2 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 2 code
+
     \begin{minted}{python}
+    fruits = {'a': "apple", 'b': "banana", 'c': "cherry"}
+    for x in fruits:
+        if x == "banana":
+            break
+        print(x, end=' ')
     \end{minted}
-    % TODO: fill in mcq 2 options and alert correct one
+
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item \alert{A. \texttt{a b c }}
+        \item B. \texttt{apple banana cherry }
+        \item C. \texttt{a }
+        \item D. \texttt{apple }
     \end{itemize}
 
     Explanation:
-    % TODO: fill in mcq 2 explanation
+    The loop iterates over the \textbf{keys} of the dictionary.
+    Since none of the keys is \python{"banana"},
+    the loop prints all the keys: \python{"a b c "}.
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3}
     What is the output of the following code?
-    % TODO: fill in mcq 3 code
+
     \begin{minted}{python}
+    for i in range(1, 7):
+        for j in range(1, 7):
+            if i == j:
+                print(i+j, end=' ')
+            else:
+                print('-', end=' ')
+        print()
     \end{minted}
-    % TODO: fill in mcq 3 options
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+
+    \begin{tabular}{cl|cl}
+        A & \texttt{2 4 6 8 10 12} & B & \texttt{2 4 6 8 10 12 14} \\\hline
+        C &
+        \makecell[tl]{
+        \texttt{2 - - - - - }                                      \\
+        \texttt{- 4 - - - - }                                      \\
+        \texttt{- - 6 - - - }                                      \\
+        \texttt{- - - 8 - - }                                      \\
+        \texttt{- - - - 10 - }                                     \\
+        \texttt{- - - - - 12}                                      \\
+        }
+          & D                      &
+        \makecell[tl]{
+        \texttt{2 - - - - - - }                                    \\
+        \texttt{- 4 - - - - - }                                    \\
+        \texttt{- - 6 - - - - }                                    \\
+        \texttt{- - - 8 - - - }                                    \\
+        \texttt{- - - - 10 - - }                                   \\
+        \texttt{- - - - - 12 - }                                   \\
+        \texttt{- - - - - - 14}                                    \\
+        }
+    \end{tabular}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 3 code
-    \begin{minted}{python}
-    \end{minted}
-    % TODO: fill in mcq 3 options and alert correct one
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
 
-    Explanation:
-    % TODO: fill in mcq 3 explanation
+    \begin{minted}{python}
+    for i in range(1, 7):
+        for j in range(1, 7):
+            if i == j:
+                print(i+j, end=' ')
+            else:
+                print('-', end=' ')
+        print()
+    \end{minted}
+    \begin{itemize}
+        \item \alert{C.}
+              \alert{
+                  \makecell[tl]{
+                      \texttt{2 - - - - - }                                              \\
+                      \texttt{- 4 - - - - }                                              \\
+                      \texttt{- - 6 - - - }                                              \\
+                      \texttt{- - - 8 - - }                                              \\
+                      \texttt{- - - - 10 - }                                             \\
+                      \texttt{- - - - - 12}                                              \\
+                  }}
+    \end{itemize}
+    Explanation: Both loops iterates from 1 to 6.
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ4}
     What is the output of the following code?
-    % TODO: fill in mcq 4 code
+
     \begin{minted}{python}
+    for i in range(5, 0, -1):
+        for j in range(i, 0, -1):
+            print(2*j-1, end=' ')
+        print()
     \end{minted}
-    % TODO: fill in mcq 4 options
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & B & C & D          \\\hline
+        \makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{9 7 5 3 }      \\
+        \texttt{9 7 5 }        \\
+        \texttt{9 7 }          \\
+        \texttt{9 }            \\
+        }
+          &
+        \makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{7 5 3 1}       \\
+        \texttt{5 3 1 }        \\
+        \texttt{3 1 }          \\
+        \texttt{1 }            \\
+        }
+          &
+        \makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{7 5 3 1 -1}    \\
+        \texttt{5 3 1 -1 -3}   \\
+        \texttt{3 1 -1 -3 -5}  \\
+        \texttt{1 -1 -3 -5 -7} \\
+        }
+          &
+        \makecell[tl]{
+        \texttt{1 }            \\
+        \texttt{1 3 }          \\
+        \texttt{1 3 5 }        \\
+        \texttt{1 3 5 7 }      \\
+        \texttt{1 3 5 7 9 }    \\
+        }                      \\\hline
+    \end{tabular}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ4 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 4 code
+
     \begin{minted}{python}
+    for i in range(5, 0, -1):
+        for j in range(i, 0, -1):
+            print(2*j-1, end=' ')
+        print()
     \end{minted}
-    % TODO: fill in mcq 4 options and alert correct one
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        A & \alert{B} & C & D  \\\hline
+        \makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{9 7 5 3 }      \\
+        \texttt{9 7 5 }        \\
+        \texttt{9 7 }          \\
+        \texttt{9 }            \\
+        }
+          &
+        \alert{\makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{7 5 3 1}       \\
+        \texttt{5 3 1 }        \\
+        \texttt{3 1 }          \\
+        \texttt{1 }            \\
+            }}
+          &
+        \makecell[tl]{
+        \texttt{9 7 5 3 1 }    \\
+        \texttt{7 5 3 1 -1}    \\
+        \texttt{5 3 1 -1 -3}   \\
+        \texttt{3 1 -1 -3 -5}  \\
+        \texttt{1 -1 -3 -5 -7} \\
+        }
+          &
+        \makecell[tl]{
+        \texttt{1 }            \\
+        \texttt{1 3 }          \\
+        \texttt{1 3 5 }        \\
+        \texttt{1 3 5 7 }      \\
+        \texttt{1 3 5 7 9 }    \\
+        }                      \\\hline
+    \end{tabular}
 
     Explanation:
-    % TODO: fill in mcq 4 explanation
+
+    The outer loop iterates with \python{i} from 5 down to 1.
+    The inner loop iterates with \python{j} from \python{i} down to 1.
+    Every line has decreasing odd numbers starting from 9.
+
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ5}
     What is the output of the following code?
-    % TODO: fill in mcq 5 code
-    \begin{minted}{python}
-    \end{minted}
-    % TODO: fill in mcq 5 options
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+
+    \begin{small}
+        \begin{minted}{python}
+    p = 1
+    while p < 6:
+        q = 1
+        while q < 6:
+            print(p, q, sep=', ')
+            q += 1
+            if q == 2:
+                break
+        print("****")
+        p += 1
+        if p == 3:
+            break
+        \end{minted}
+
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            A & B & C & D \\\hline
+            \texttt{1, 1}
+              &
+            \makecell[tl]{
+            \texttt{1, 1} \\
+            \texttt{****} \\
+            }
+              &
+            \makecell[tl]{
+            \texttt{1, 1} \\
+            \texttt{****} \\
+            \texttt{2, 1} \\
+            \texttt{****} \\
+            }
+              &
+            None of the above
+            \\\hline
+        \end{tabular}
+    \end{small}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ5 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 5 code
-    \begin{minted}{python}
+    \begin{small}
+        \begin{minted}{python}
+    p = 1
+    while p < 6:
+        q = 1
+        while q < 6:
+            print(p, q, sep=', ')
+            q += 1
+            if q == 2:
+                break
+        print("****")
+        p += 1
+        if p == 3:
+            break
+        \end{minted}
+
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            A & B & \alert{C} & D \\\hline
+            \texttt{1, 1}
+              &
+            \makecell[tl]{
+            \texttt{1, 1}         \\
+            \texttt{****}         \\
+            }
+              &
+            \alert{\makecell[tl]{
+            \texttt{1, 1}         \\
+            \texttt{****}         \\
+            \texttt{2, 1}         \\
+            \texttt{****}         \\
+                }}
+              &
+            None of the above
+            \\\hline
+        \end{tabular}
+    \end{small}
+\end{frame}
+
+\subsection{Exercise: Inverted Triangle}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Inverted Triangle}
+
+    Write a program to ask the user to input a positive integer $n$.
+    Use \python{for} loop to finish this question.
+    Print an inverted triangle as follows.
+    \begin{minted}{text}
+    0 1 2 ... n-1 n
+    0 1 2 ... n-1
+    ...
+    0 1 2
+    0 1
+    0
     \end{minted}
-    % TODO: fill in mcq 5 options and alert correct one
+
+    Examples:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output                     \\ \hline
+            1     & \makecell[tl]{\texttt{0 1} \\ \texttt{0}}       \\ \hline
+            3     &
+            \makecell[tl]{\texttt{0 1 2 3}     \\ \texttt{0 1 2} \\ \texttt{0 1} \\ \texttt{0}}
+            \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Inverted Triangle Solution}
+
+    Solution:
+    \begin{minted}{python}
+    n = int(input())
+    for i in range(n + 1):
+        for j in range(n - i):
+            if j < n - i - 1:
+                print(j, end=' ')
+            else:
+                print(j)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Special Triangle}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Special Triangle}
+
+    Write a program to ask the user to input a positive integer $n$.
+    Use \python{for} loop to finish this question.
+    Print a triangle with $n$ lines as follows.
+    \begin{minted}{text}
+    0
+    1 0
+    0 1 0
+    ...
+    \end{minted}
+
+    Examples:
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output     \\ \hline
+            1     & 0          \\ \hline
+            5     &
+            \makecell[tl]{
+            \texttt{0}         \\
+            \texttt{1 0}       \\
+            \texttt{0 1 0}     \\
+            \texttt{1 0 1 0}   \\
+            \texttt{0 1 0 1 0} \\
+            }
+            \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Special Triangle Solution}
+
+    Solution:
+
+    \begin{minted}{python}
+    n = int(input())
+    for i in range(n):
+        for j in range(i + 1):
+            if j < i:
+                print((i + j) % 2, end=' ')
+            else:
+                print((i + j) % 2)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Sum of List}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Sum of List}
+    Complete the code below by defining the two functions
+    \python{readList()} and \python{calSum()} as explained below.
+
+    \begin{minted}{python}
+    myList = readList()
+    sum = calSum(myList)
+    print(sum)
+    \end{minted}
+
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item \python{readList()}:
+              Read numbers from user until zero is received,
+              return the list of input numbers.
+        \item \python{calSum(myList)}:
+              Calculate the sum of the values in the list and return it.
+        \item Hints: Use \python{list.append(value)} to add an element to the list.
     \end{itemize}
 
-    Explanation:
-    % TODO: fill in mcq 5 explanation
-\end{frame}
-
-\subsection{Exercise: TODO1EX}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO1EX}
-
-    % TODO: fill in description of TODO1EX
-
-    Examples:
-
-    % TODO: fill in examples of TODO1EX
-    \begin{center}
-        \begin{tabular}{|c|c|}
-            \hline
-            Input & Output  \\ \hline
-                  &         \\ \hline
-                  &         \\ \hline
-        \end{tabular}
-\end{center}
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO1EX Solution}
+    \frametitle{Practice Time: Sum of List Solution}
 
     Solution:
-    % TODO: fill in solution of TODO1EX
     \begin{minted}{python}
+    def readList():
+        ret = []
+        while True:
+            n = int(input())
+            if n == 0:
+                return ret
+            ret.append(n)
+    
+    def calSum(myList):
+        ret = 0
+        for num in myList:
+            ret += num
+        return ret
     \end{minted}
 \end{frame}
 
-\subsection{Exercise: TODO2EX}
+\subsection{Exercise: Set of Numbers}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO2EX}
+    \frametitle{Practice Time: Set of Numbers}
 
-    % TODO: fill in description of TODO2EX
+    Complete the code below by defining the two functions
+    \python{readSet()} and \python{findNo()} as explained below.
 
-    Examples:
-
-    % TODO: fill in examples of TODO2EX
-    \begin{center}
-        \begin{tabular}{|c|c|}
-            \hline
-            Input & Output  \\ \hline
-                  &         \\ \hline
-                  &         \\ \hline
-        \end{tabular}
-\end{center}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO2EX Solution}
-
-    Solution:
-    % TODO: fill in solution of TODO2EX
     \begin{minted}{python}
+    mySet = readSet()
+    number = int(input("Find number?"))
+    print(findNo(mySet, number))
     \end{minted}
-\end{frame}
 
-\subsection{Exercise: TODO3EX}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO3EX}
-
-    % TODO: fill in description of TODO3EX
-
-    Examples:
-
-    % TODO: fill in examples of TODO3EX
-    \begin{center}
-        \begin{tabular}{|c|c|}
-            \hline
-            Input & Output  \\ \hline
-                  &         \\ \hline
-                  &         \\ \hline
-        \end{tabular}
-\end{center}
+    \begin{itemize}
+        \item \python{readSet()}:
+              Read numbers from user until zero is received,
+              return the set of input numbers.
+        \item \python{findNo(mySet, number)}:
+              return \python{True} if \python{number} is in \python{mySet},
+              otherwise return \python{False}.
+        \item Hints: You can ignore the case of entering multiple identical numbers.
+    \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO3EX Solution}
+    \frametitle{Practice Time: Set of Numbers Solution}
 
     Solution:
-    % TODO: fill in solution of TODO3EX
     \begin{minted}{python}
-    \end{minted}
-\end{frame}
-
-\subsection{Exercise: TODO4EX}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO4EX}
-
-    % TODO: fill in description of TODO4EX
-
-    Examples:
-
-    % TODO: fill in examples of TODO4EX
-    \begin{center}
-        \begin{tabular}{|c|c|}
-            \hline
-            Input & Output  \\ \hline
-                  &         \\ \hline
-                  &         \\ \hline
-        \end{tabular}
-\end{center}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO4EX Solution}
-
-    Solution:
-    % TODO: fill in solution of TODO4EX
-    \begin{minted}{python}
+    def readSet():
+        ret = set()
+        while True:
+            n = int(input())
+            if n == 0:
+                return ret
+            ret.add(n)
+    
+    def findNo(mySet, number):
+        return number in mySet
     \end{minted}
 \end{frame}
 
@@ -377,7 +624,7 @@
         \item Happy Coding!
         \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
         \item Submit your tutorial 5 exercises before \textbf{October 31 23:59}!
-        
+
         \item Bonus: \LaTeX source code and compiled pdf of this slides available at
               \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
               {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
