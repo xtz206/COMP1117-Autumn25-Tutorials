@@ -285,21 +285,6 @@
         \item D. None of the above
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ1 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    n = input("Please input an integer") # 12
-    print(n * 2)
-    \end{minted}
-
-    \begin{itemize}
-        \item A. \texttt{24}
-        \item \alert{B. \texttt{1212}}
-        \item C. Error
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ2}
@@ -320,25 +305,6 @@
         \item D. Error message
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ2 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    if 0:
-        print("a")
-    elif -1:
-        print("b")
-    else:
-        print("c")
-    \end{minted}
-
-    \begin{itemize}
-        \item A. \texttt{a}
-        \item \alert{B. \texttt{b}}
-        \item C. \texttt{c}
-        \item D. Error message
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ3}
@@ -354,24 +320,6 @@
     \begin{itemize}
         \item A. \texttt{lololo} (repeat 3 lines)
         \item B. \texttt{lolololololololololololololololololo}
-        \item C. \texttt{olololololololololololololololololol}
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ3 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    s = ['l', 'o']
-    x = 0
-    for i in range(6):
-        for j in range(6):
-            print(s[x], end = '')
-            x = (x + 1) % 2
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{lololo} (repeat 3 lines)
-        \item \alert{B. \texttt{lolololololololololololololololololo}}
         \item C. \texttt{olololololololololololololololololol}
         \item D. None of the above
     \end{itemize}
@@ -400,29 +348,6 @@
         \item D. \texttt{4}
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ4 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    a = 1
-    b = 0
-    c = 0
-    if not a or b:
-        print(1)
-    elif not a or not b and c:
-        print(2)
-    elif not a or not b or not b and a:
-        print(3)
-    else:
-        print(4)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{1}
-        \item B. \texttt{2}
-        \item \alert{C. \texttt{3}}
-        \item D. \texttt{4}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ5}
@@ -436,20 +361,6 @@
         \item B. \python{tuple}
         \item C. \python{dict}
         \item D. None of the above
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ5 Solution}
-    What is the type of variable \texttt{a}?
-    \begin{minted}{python}
-    a = ("Name": "Peter", "UID": "12334", 
-         "Age": "18", "Grade": "A")
-    \end{minted}
-    \begin{itemize}
-        \item A. \python{list}
-        \item B. \python{tuple}
-        \item C. \python{dict}
-        \item \alert{D. None of the above}
     \end{itemize}
 \end{frame}
 
@@ -466,19 +377,6 @@
         \item D. None of the above
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ6 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    print(9791286 % 10 // 3)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{0}
-        \item B. \texttt{1}
-        \item \alert{C. \texttt{2}}
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ7}
@@ -489,20 +387,6 @@
     \end{minted}
     \begin{itemize}
         \item A. \texttt{break}
-        \item B. \texttt{stop}
-        \item C. \texttt{terminate}
-        \item D. \texttt{continue}
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ7 Solution}
-    What statement should be used to exit this while loop?
-    \begin{minted}{python}
-    while True:
-        print("Hello")
-    \end{minted}
-    \begin{itemize}
-        \item \alert{A. \texttt{break}}
         \item B. \texttt{stop}
         \item C. \texttt{terminate}
         \item D. \texttt{continue}
@@ -528,25 +412,6 @@
         \item D. \texttt{fgh}
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ8 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    s = "abcdefgh"
-    m = ""
-    for c in s:
-        if c in "aeiou":
-            continue
-        m = m + c
-    print(m)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{acbdefgh}
-        \item \alert{B. \texttt{ae}}
-        \item C. \texttt{cbdfgh}
-        \item D. \texttt{fgh}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ9}
@@ -560,21 +425,6 @@
         \item A. \texttt{[[[1,1], [2,1]], [[1,2], [2,2]], [[1,3], [2,3]]]}
         \item B. \texttt{[[1, 1], [2, 1], [1, 2], [2, 2], [1, 3], [2, 3]]}
         \item C. \texttt{[[[0, 0], [1, 0]], [[0, 1], [1, 1]], [[0, 2], [1, 2]]]}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ9 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    lc = [[[a, b]] for a in range(2) for b in range(3)]
-    print(lc)
-    \end{minted}
-    \begin{itemize}
-        \small
-        \item A. \texttt{[[[1,1], [2,1]], [[1,2], [2,2]], [[1,3], [2,3]]]}
-        \item B. \texttt{[[1, 1], [2, 1], [1, 2], [2, 2], [1, 3], [2, 3]]}
-        \item C. \alert{\texttt{[[[0, 0], [1, 0]], [[0, 1], [1, 1]], [[0, 2], [1, 2]]]}}
         \item D. Error
     \end{itemize}
 \end{frame}
@@ -596,23 +446,6 @@
         \item D. \texttt{\{',', 'b', 'c'\}}
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ10 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    sc = set()
-    for c in "ab,ac,bb,bc,":
-        if c != 'a':
-            sc.add(c)
-    print(sc)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{\{'b', 'c', 'bb', 'bc'\}}
-        \item B. \texttt{\{'bb', 'bc'\}}
-        \item C. \texttt{\{'bcbbbc'\}}
-        \item \alert{D. \texttt{\{',', 'b', 'c'\}}}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ11}
@@ -627,22 +460,6 @@
         \item A. \texttt{1, 8, 27}
         \item B. \texttt{1, 2, 3}
         \item C. Error
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ11 Solution}
-    What is the output of the following code snippet?
-    \begin{minted}{python}
-    dc = dict()
-    for i in range(1, 3):
-        dc[i] = i * i * i
-    print(dc[1], dc[2], dc[3])
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{1, 8, 27}
-        \item B. \texttt{1, 2, 3}
-        \item \alert{C. Error}
         \item D. None of the above
     \end{itemize}
 \end{frame}
@@ -663,22 +480,6 @@
         \item D. None of the above
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ12 Solution}
-    How many lines of "Hello" will be printed by the following snippet?
-    \begin{minted}{python}
-    i = 0
-    while i <= 2024:
-        print("Hello")
-        i = i + 1
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{2023}
-        \item B. \texttt{2024}
-        \item \alert{C. \texttt{2025}}
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ13}
@@ -689,19 +490,6 @@
     \begin{itemize}
         \item A. \texttt{4}
         \item B. \texttt{5}
-        \item C. \texttt{6}
-        \item D. Error message
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ13 Solution}
-    What is the output of the following statement?
-    \begin{minted}{python}
-    print(int(int(int(30.4) / 3) / 2))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{4}
-        \item \alert{B. \texttt{5}}
         \item C. \texttt{6}
         \item D. Error message
     \end{itemize}
@@ -722,21 +510,6 @@
         \item D. None of the above
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ14 Solution}
-    What is the output of the following statement?
-    \begin{minted}{python}
-    x = "\""
-    y = "a\""
-    print(x, y, sep = "\\")
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{\textbackslash"\textbackslash\textbackslash a\textbackslash"}
-        \item B. \texttt{"\textbackslash\textbackslash a"}
-        \item \alert{C. \texttt{"\textbackslash a"}}
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ15}
@@ -745,16 +518,6 @@
         \item A. \python{o0_0o}
         \item B. \python{python.py}
         \item C. \python{ILoveDonaldTrump}
-        \item D. All of the above
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ15 Solution}
-    Which of the following variable names is invalid?
-    \begin{itemize}
-        \item A. \texttt{o0\_0o}
-        \item \alert{B. \texttt{python.py}}
-        \item C. \texttt{ILoveDonaldTrump}
         \item D. All of the above
     \end{itemize}
 \end{frame}
@@ -770,21 +533,6 @@
     \begin{itemize}
         \item A. \texttt{["HKU", "sad", "boring"]}
         \item B. \texttt{["happy", "HKU", "boring"]}
-        \item C. \texttt{["happy", "sad", "HKU"]}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ16 Solution}
-    What is the output of the following Python code snippet?
-    \begin{minted}{python}
-    T = ["happy", "sad", "boring"]
-    T[-2] = "HKU"
-    print(T)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{["HKU", "sad", "boring"]}
-        \item \alert{B. \texttt{["happy", "HKU", "boring"]}}
         \item C. \texttt{["happy", "sad", "HKU"]}
         \item D. Error
     \end{itemize}
@@ -811,27 +559,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ17 Solution}
-    What will be printed by the following Python code snippet?
-    \begin{minted}{python}
-    if 0:
-        print("a", end="")
-        print(1)
-    elif "":
-        print("b", end="")
-        print(2)
-    else:
-        print("c", end="")
-        print(3)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{a1}
-        \item B. \texttt{b2}
-        \item \alert{C. \texttt{c3}}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ18}
@@ -841,18 +568,6 @@
     \end{minted}
     \begin{itemize}
         \item A. \python{True}
-        \item B. \python{False}
-        \item C. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ18 Solution}
-    What is the value of the following expression?
-    \begin{minted}{python}
-    True or True and False
-    \end{minted}
-    \begin{itemize}
-        \item \alert{A. \texttt{True}}
         \item B. \python{False}
         \item C. Error
     \end{itemize}
@@ -876,24 +591,6 @@
         \item D. \texttt{21}
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ19 Solution}
-    What is printed by the following Python code snippet?
-    \begin{minted}{python}
-    def f(n):
-        (a, b) = (0, 1)
-        while a < n:
-            a, b = b, a+b
-        return b
-    print(int(f(8)))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{5}
-        \item B. \texttt{8}
-        \item \alert{C. \texttt{13}}
-        \item D. \texttt{21}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ20}
@@ -904,19 +601,6 @@
     \begin{itemize}
         \item A. Error
         \item B. \texttt{True}
-        \item C. \texttt{1}
-        \item D. \texttt{False}
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ20 Solution}
-    What is the output of the following Python code snippet?
-    \begin{minted}{python}
-    print(3 == 2 + 1)
-    \end{minted}
-    \begin{itemize}
-        \item A. Error
-        \item \alert{B. \texttt{True}}
         \item C. \texttt{1}
         \item D. \texttt{False}
     \end{itemize}
@@ -940,24 +624,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ21 Solution}
-    What is the output of the following Python code snippet?
-    \begin{minted}{python}
-    x = 3
-    if x > 2:
-        x = x * 2
-    if x > 4:
-        x = 0
-    print(x)
-    \end{minted}
-    \begin{itemize}
-        \item \alert{A. \texttt{0}}
-        \item B. \texttt{3}
-        \item C. \texttt{4}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ22}
@@ -972,22 +638,6 @@
         \item A. no output
         \item B. print the letter \texttt{j} continuously, without stopping
         \item C. print the letter \texttt{a} continuously, without stopping
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ22 Solution}
-    What is the output of the following Python code snippet?
-    \begin{minted}{python}
-    x = "abcd"
-    j = "a"
-    while j in x:
-        print(j, end='')
-    \end{minted}
-    \begin{itemize}
-        \item A. no output
-        \item B. print the letter \texttt{j} continuously, without stopping
-        \item \alert{C. print the letter \texttt{a} continuously, without stopping}
         \item D. Error
     \end{itemize}
 \end{frame}
@@ -1006,23 +656,6 @@
         \item A. \texttt{8}
         \item B. \texttt{12}
         \item C. \texttt{16}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ23 Solution}
-    What is the output of the following program?
-    \begin{minted}{python}
-    x = -4
-    a = [2, 4, 6, 8]
-    for i in range(-2, 2):
-        x = x + a[i]
-    print(x)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{8}
-        \item B. \texttt{12}
-        \item \alert{C. \texttt{16}}
         \item D. Error
     \end{itemize}
 \end{frame}
@@ -1047,26 +680,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ24 Solution}
-    What is the output of the following program?
-    \begin{minted}{python}
-    i = 0
-    for j in range(3):
-        while True:
-            if i == 3:
-                break
-            i = i + 1
-        print("a", end='')
-    print("b")
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{b}
-        \item B. \texttt{aab}
-        \item \alert{C. \texttt{aaab}}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ25}
@@ -1079,21 +692,6 @@
     \begin{itemize}
         \item A. \texttt{9}
         \item B. \texttt{10}
-        \item C. \texttt{11}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ25 Solution}
-    What is the output of the following Python code snippet?
-    \begin{minted}{python}
-    n = 8
-    f = lambda x: x + n
-    print(f(2))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{9}
-        \item \alert{B. \texttt{10}}
         \item C. \texttt{11}
         \item D. Error
     \end{itemize}
@@ -1118,25 +716,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ26 Solution}
-    What is the output of the following snippet?
-    \begin{minted}{python}
-    def f(n):
-        for _ in range(2, n//2+1):
-            if n % _ == 0:
-                return False
-        return True
-
-    print(list(filter(f, range(2, 11))))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{[2, 3, 4, 5, 6, 7, 8, 9, 10]}
-        \item B. \texttt{[True, True, False, True, False, True, False, False, False]}
-        \item \alert{C. \texttt{[2, 3, 5, 7]}}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ27}
@@ -1148,19 +727,6 @@
         \item A. \texttt{[2]}
         \item B. \texttt{23}
         \item C. \texttt{[222]}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ27 Solution}
-    What is the output of the following Python statement?
-    \begin{minted}{python}
-    print(list(map(int, ['2' * 3])))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{[2]}
-        \item B. \texttt{23}
-        \item C. \alert{\texttt{[222]}}
         \item D. Error
     \end{itemize}
 \end{frame}
@@ -1180,24 +746,6 @@
         \item A. \texttt{7}
         \item B. \texttt{8}
         \item C. \texttt{9}
-        \item D. \texttt{12}
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ28 Solution}
-    What is the output of the following program?
-    \begin{minted}{python}
-    c = 1
-    x = 0
-    while c <= 6:
-        x = x + c
-        c = c + 2
-    print(x)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{7}
-        \item B. \texttt{8}
-        \item \alert{C. \texttt{9}}
         \item D. \texttt{12}
     \end{itemize}
 \end{frame}
@@ -1225,29 +773,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ29 Solution}
-    What is the output of the following program?
-    \begin{minted}{python}
-    def p(x):
-        is_p = True
-        for f in range(2, x):
-            if x % f == 0:
-                is_p = False
-        if is_p == True:
-            return "Yes"
-        else:
-            return "No"
-
-    print(p(9))
-    \end{minted}
-    \begin{itemize}
-        \item \alert{A. \texttt{Yes}}
-        \item B. \texttt{No}
-        \item C. \texttt{True}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ30}
@@ -1265,22 +790,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ30 Solution}
-    What is the output of the following program?
-    \begin{minted}{python}
-    def f(x, y, z):
-        return max(x) + min(y * z)
-
-    print(f([1, 2, 3], [4, 5, 6], 7))
-    \end{minted}
-    \begin{itemize}
-        \item \alert{A. \texttt{7}}
-        \item B. \texttt{[3, 28]}
-        \item C. \texttt{[3, 4]}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ31}
@@ -1293,21 +802,6 @@
     \begin{itemize}
         \item A. \texttt{[4]}
         \item B. \texttt{[5, 5, 7, 3]}
-        \item C. \texttt{[5, 5, 2, 3, 3]}
-        \item D. Error
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ31 Solution}
-    What is the output of the following snippet?
-    \begin{minted}{python}
-    alist = list(map(len, ["don't", "Hello",
-        "is, are", "123"]))
-    print(alist)
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{[4]}
-        \item \alert{B. \texttt{[5, 5, 7, 3]}}
         \item C. \texttt{[5, 5, 2, 3, 3]}
         \item D. Error
     \end{itemize}
@@ -1330,23 +824,6 @@
         \item D. Error
     \end{itemize}
 \end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ32 Solution}
-    What is the output of the following snippet?
-    \begin{minted}{python}
-    d = {}
-    d["a"] = [1, 2]
-    d[2] = "Hello"
-    d[(12, 3)] = "a"
-    print(d[d[(12, 3)]])
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{"a"}
-        \item \alert{B. \texttt{[1, 2]}}
-        \item C. \texttt{"Hello"}
-        \item D. Error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{MCQ33}
@@ -1360,45 +837,6 @@
         \item B. \texttt{10}
         \item C. \texttt{4}
         \item D. None of the above
-    \end{itemize}
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{MCQ33 Solution}
-    What is the output of the following snippet?
-    \begin{minted}{python}
-    s = {1, 2, 2, 3, 3, 3, 4, 4, 4, 4}
-    print(len(list(s)))
-    \end{minted}
-    \begin{itemize}
-        \item A. \texttt{[1, 2, 3, 4]}
-        \item B. \texttt{10}
-        \item \alert{C. \texttt{4}}
-        \item D. None of the above
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Quenstions?}
-    Any questions so far? Or you find some of the solutions are incorrect?
-    \begin{itemize}
-        \item Feel free to contact me via email!
-        \item Email: \href{mailto:u3629274@connect.hku.hk}{u3629274@connect.hku.hk}
-        \item You may post your question on Ed or Moodle.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Thank You!}
-
-    Enjoy your coding journey in Python!
-
-    \begin{itemize}
-        \item Happy Coding!
-        \item See you in the tutorial (HW311, 10:00 - 11:50, Thursday)
-        \item Hope you have prepared well for Quiz (\textbf{October 28})!
-        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
-              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
-              {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
     \end{itemize}
 \end{frame}
 
