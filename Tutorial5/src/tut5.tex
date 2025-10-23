@@ -217,9 +217,9 @@
     \begin{minted}{python}
     fruits = ["apple", "banana", "cherry"]
     for x in fruits:
-    if x == "banana":
-        break
-    print(x, end=' ')    
+        if x == "banana":
+            break
+        print(x, end=' ')    
     \end{minted}
     \begin{itemize}
         \item A. \texttt{apple banana cherry}
@@ -235,9 +235,9 @@
     \begin{minted}{python}
     fruits = ["apple", "banana", "cherry"]
     for x in fruits:
-    if x == "banana":
-        break
-    print(x, end=' ')    
+        if x == "banana":
+            break
+        print(x, end=' ')    
     \end{minted}
 
     \begin{itemize}
@@ -598,8 +598,8 @@
     \begin{minted}{python}
     n = int(input())
     for i in range(n + 1):
-        for j in range(n - i):
-            if j < n - i - 1:
+        for j in range(n - i + 1):
+            if j < n - i:
                 print(j, end=' ')
             else:
                 print(j)
