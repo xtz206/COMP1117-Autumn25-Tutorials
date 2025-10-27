@@ -1,0 +1,435 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\newcommand{\python}[1]{\mintinline{python}|#1|}
+
+\title{COMP1117 Tutorial 6}
+\author{YUAN Wenxuan}
+\date{October 30, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Overview of Today's Tutorial}
+    \tableofcontents
+\end{frame}
+
+\section{Recap and Extensions}
+\subsection{Recap: Recursion}
+\begin{frame}[fragile]
+    \frametitle{Recap: Recursion}
+    \begin{itemize}
+        \item Recursion: A function calling itself, while having a base case to stop
+        \item Key components:
+              \begin{itemize}
+                  \item Base Case (When to stop)
+                  \item Recursive Case (The problem size reduces each time)
+              \end{itemize}
+        \item Example: Factorial Function
+              \begin{minted}{python}
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+        \end{minted}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{Recap: Recursion (Cont.)}
+    \begin{itemize}
+        \item Recursion can simplify code for problems like tree traversal, combinatorial problems, etc.
+        \item Examples of recursive problems:
+              \begin{itemize}
+                  \item Fibonacci Sequence
+                  \item Tower of Hanoi
+                  \item Permutations and Combinations
+              \end{itemize}
+        \item Common pitfalls:
+              \begin{itemize}
+                  \item Missing base case
+                  \item Not reducing problem size
+                  \item Stack overflow for deep recursion
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Recap: Quick Exponentiation vs Linear Exponentiation}
+              \begin{minted}{python}
+    def qexp(base, exp):
+        if exp == 0 or base == 1:
+            return 1
+        if base == 0:
+            return 0
+        if exp % 2 == 1:
+            return base * qexp(base, exp - 1)
+        half = qexp(base, exp // 2)
+        return half * half
+    def lexp(base, exp):
+        result = 1
+        while exp > 0:
+            exp -= 1
+            result *= base
+        return result
+              \end{minted}
+\end{frame}
+
+\subsection{Extension: Introduction to Python OOP}
+\begin{frame}[fragile]
+    \frametitle{Extension: Classes and Objects}
+    \begin{itemize}
+        \item Everything in Python is an object
+        \item Class: Blueprint for creating objects
+        \item Object: Instance of a class              
+    \end{itemize}
+
+    Example:
+    \begin{minted}[fontsize=\small]{python}
+    class Car:
+        def __init__(self, speed: int, color: str):
+            self.speed = speed
+            self.color = color
+        def accelerate(self, increment: int) -> None:
+            self.speed += increment        
+        def __str__(self) -> str:
+            return f"{self.color} car moving at {self.speed} km/h" 
+    my_car = Car(10, "red")
+    print(my_car.speed)  # Output: 10
+    my_car.accelerate(40)
+    print(my_car)  # Output: red car moving at 50 km/h
+    \end{minted}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Extension: Attributes and Methods}
+    \begin{itemize}
+        \item Attributes: Variables that belong to an object
+        \item Methods: Functions that belong to an object
+        \item \python{self}: Refers to the current instance of the class
+        \item OOP Principles:
+              \begin{itemize}
+                  \item Encapsulation
+                  \item Inheritance
+                  \item Polymorphism
+              \end{itemize}
+        \item Improve Code Organization and Reusability
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Extension: Magic Methods}
+    \begin{itemize}
+        \item Special methods with double underscores (e.g., \python{__init__}, \python{__str__})
+        \item Allow customization of object behavior
+        \item Common magic methods:
+              \begin{itemize}
+                  \item \python{__init__}: Constructor
+                  \item \python{__str__}: String representation
+                  \item \python{__add__}: Addition operator
+                  \item \python{__len__}: Length of object
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Extension: Quick Demo of Complex Number Class}
+    \begin{minted}[fontsize=\small]{python}
+    class Complex:
+        def __init__(self, real: float, imag: float):
+            self.real = real
+            self.imag = imag
+        def __add__(self, other):
+            return Complex(self.real + other.real,
+                           self.imag + other.imag)
+        def __str__(self):
+            if self.imag < 0:
+                return f"{self.real} - {-self.imag}i"
+            return f"{self.real} + {self.imag}i"
+    c1 = Complex(2, 3)
+    c2 = Complex(4, 5)
+    c3 = c1 + c2
+    print(c3)  # Output: 6 + 8i
+    \end{minted}    
+\end{frame}
+
+\subsection{Extension: Type Hint}
+\begin{frame}[fragile]
+    \frametitle{Extension: Type Hint}
+    \begin{itemize}
+        \item Type hints: Optional annotations to indicate expected data types
+        \item Improve code readability and help with static analysis
+        \item Syntax:
+              \begin{itemize}
+                  \item Function parameters: \python{def func(param: T) -> R:}
+                  \item Variables: \python{var: T = value}
+              \end{itemize}
+    \end{itemize}
+    Example:
+    \begin{minted}{python}
+    def greet(name: str) -> str:
+        return f"Hello, {name}!"
+    age: int = 25
+    \end{minted}
+\end{frame}
+
+\section{Practice Time!}
+\begin{frame}
+    \frametitle{Time to Practice!}
+    \begin{itemize}
+        \item Even Product Calculator
+        \item Multiply Two Number
+        \item Special Sequence
+        \item Digital Calculator
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Exercise: Even Product Calculator}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Even Product Calculator}
+
+    Implement a recursive function to calculate the product of
+    all the positive even numbers not larger than n (n>=2).
+    For example, if n = 7, the return value of this function will be 48.
+    That’s because:
+    \begin{enumerate}
+        \item All the positive even number no larger than n = 7 is 6, 4, and 2
+        \item Their product is 6 * 4 * 2 = 48
+    \end{enumerate}
+    Given Code:
+    \begin{minted}{python}
+    def product(n):
+        # Your implementation here
+    print(product(int(input())))
+    \end{minted}
+    Examples:
+
+    \begin{center}
+        \small
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output     \\ \hline
+            3     & 2          \\ \hline
+            5     & 8          \\ \hline
+            10    & 3840       \\ \hline
+            20    & 3715891200 \\ \hline
+            15    & 645120     \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Even Product Calculator Solution}
+
+    Solution:
+    \begin{minted}{python}
+    def product(n):
+        if n == 2:
+            return 2
+        if n % 2 == 0:
+            return n * product(n - 2)
+        return product(n - 1)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Multiply Two Number}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Multiply Two Number}
+
+    Implement a recursive function \python{multiply(a, b)} to
+    calculate the value of \python{a * b} without using the \python{*} operator
+    \begin{itemize}
+        \item $a, b \ge 0$ and $\min(a, b) \le 1000$
+        \item Hint: $a * b = a + a * (b - 1)$ or $b + b * (a - 1)$
+    \end{itemize}
+    Given Code:
+    \begin{minted}{python}
+    def multiply(a, b):
+        # Your implementation here
+    a = int(input())
+    b = int(input())
+    print(multiply(a, b))
+    \end{minted}
+
+    Examples (New Line Separated Inputs):
+    \begin{center}
+        \small
+        \begin{tabular}{|c|c|}
+            \hline
+            Input  & Output \\ \hline
+            0 0    & 0      \\ \hline
+            50 100 & 5000   \\ \hline
+            1 1000 & 1000   \\ \hline
+            1000 1 & 1000   \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Multiply Two Number Solution}
+
+    Solution:
+    \begin{minted}{python}
+    def multiply(a, b):
+        if a == 0 or b == 0:
+            return 0
+        if a < b:
+            return b + multiply(a - 1, b)
+        return a + multiply(a, b - 1)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Special Sequence}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Special Sequence}
+
+    There is a number sequence:
+    $2, 1, 3, 2, 3, 6, 6, 18, 36, 108, 648, 3888, 69984 \cdots$
+
+    Try to implement the \python{func(n)} to calculate
+    the $n$-th value of this number sequence. ($n \le 1$)
+    The first three numbers are 2, 1, and 3.
+    The fourth number is the product of the first two numbers.
+    The the pattern continues like this.
+
+    Given Code:
+    \begin{minted}{python}
+    def func(n):
+        # Your implementation here
+    n = int(input())
+    print(func(n))
+    \end{minted}
+
+    Examples:
+
+    \begin{center}
+        \small
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output                              \\ \hline
+            1     & 2                                   \\ \hline
+            20    & 32889049376007652207159000669618176 \\ \hline
+            15    & 2720977920                          \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Special Sequence Solution}
+
+    Solution:
+    \begin{minted}{python}
+    def func(n):
+        if n == 1:
+            return 2
+        if n == 2:
+            return 1
+        if n == 3:
+            return 3
+        return func(n - 2) * func(n - 3)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Digital Calculator}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Digital Calculator}
+
+    Try to implement func(n, digit) to calculate the times
+    that the digit ($0 \le \text{digit} \le 9$) shown
+    in the interval $[1, n]$.
+
+    For instance, if $n = 12$, $\text{digit} = 2$, the output will be 2.
+    Because in $[1, 12]$, all the numbers are 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+    There are two numbers containing the digit 2, which are 2, and 12.
+    So the return value in this case is 2.
+
+    Another example is that if $n = 11$, $\text{digit} = 1$, the output will be 4.
+    Because in $[1, 11]$, all the numbers are $1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11$.
+    There are 3 numbers containing the digit 1, which are 1, 10, and 11.
+    Furthermore, there are two $1$ in the number 11.
+    Therefore, the return value in this case is $1 + 1 + 2 = 4$.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Digital Calculator (Cont.)}
+    Given Code:
+    \begin{minted}{python}
+    def func(n, digit):
+        # Your implementation here
+    n = int(input())
+    digit = int(input())
+    print(func(n, digit))
+    \end{minted}
+
+    Examples (New Line Separated Inputs):
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output \\ \hline
+            11 1  & 4      \\ \hline
+            22 2  & 6      \\ \hline
+            20 1  & 12     \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Digital Calculator Solution}
+
+    Solution using \python{str.count()}:
+    \begin{minted}{python}
+    def func(n, digit):
+        if n == 0:
+            return 0
+        return str(n).count(str(digit)) + \
+            func(n - 1, digit)
+    \end{minted}
+
+    Solution using only integer operations:
+    \begin{minted}{python}
+    def func(n, digit):
+        if n == 0:
+            return 0
+        retval = func(n - 1, digit)
+        while n > 0:
+            if n % 10 == digit:
+                retval += 1
+            n //= 10
+        return retval
+    \end{minted}
+\end{frame}
+
+\section{Q\&A and Reminders}
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask us in person right now
+        \item Post on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your tutorial 6 exercises before \textbf{November 7 23:59}!
+        \item Don't forget tutorial 5 exercises\\(due on \textbf{TOMORROW October 31 23:59})!
+        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+              {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+    \end{itemize}
+\end{frame}
+
+\end{document}
