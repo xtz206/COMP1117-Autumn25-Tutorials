@@ -59,7 +59,7 @@ def factorial(n):
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Recap: Quick Exponentiation vs Linear Exponentiation}
-              \begin{minted}{python}
+    \begin{minted}{python}
     def qexp(base, exp):
         if exp == 0 or base == 1:
             return 1
@@ -84,7 +84,7 @@ def factorial(n):
     \begin{itemize}
         \item Everything in Python is an object
         \item Class: Blueprint for creating objects
-        \item Object: Instance of a class              
+        \item Object: Instance of a class
     \end{itemize}
 
     Example:
@@ -153,7 +153,7 @@ def factorial(n):
     c2 = Complex(4, 5)
     c3 = c1 + c2
     print(c3)  # Output: 6 + 8i
-    \end{minted}    
+    \end{minted}
 \end{frame}
 
 \subsection{Extension: Type Hint}
@@ -244,7 +244,7 @@ def factorial(n):
     calculate the value of \python{a * b} without using the \python{*} operator
     \begin{itemize}
         \item $a, b \ge 0$ and $\min(a, b) \le 1000$
-        \item Hint: $a * b = a + a * (b - 1)$ or $b + b * (a - 1)$
+        \item Hint: $a * b = a + a(b - 1)$ or $b + b(a - 1)$
     \end{itemize}
     Given Code:
     \begin{minted}{python}
