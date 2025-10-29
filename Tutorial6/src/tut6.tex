@@ -16,6 +16,7 @@
 
 \begin{frame}
     \frametitle{Overview of Today's Tutorial}
+    Hope you did well in the quiz!
     \tableofcontents
 \end{frame}
 
@@ -131,6 +132,8 @@ def factorial(n):
                   \item \python{__str__}: String representation
                   \item \python{__add__}: Addition operator
                   \item \python{__len__}: Length of object
+                  \item \python{__eq__}: Equality comparison
+                  \item \python{__hash__}: Hash value (required for dictionary keys)
               \end{itemize}
     \end{itemize}
 \end{frame}
@@ -139,16 +142,16 @@ def factorial(n):
     \frametitle{Extension: Quick Demo of Complex Number Class}
     \begin{minted}[fontsize=\small]{python}
     class Complex:
-        def __init__(self, real: float, imag: float):
-            self.real = real
-            self.imag = imag
+        def __init__(self, re: float, im: float):
+            self.re = re
+            self.im = im
         def __add__(self, other):
-            return Complex(self.real + other.real,
-                           self.imag + other.imag)
+            return Complex(self.re + other.re,
+                           self.im + other.im)
         def __str__(self):
-            if self.imag < 0:
-                return f"{self.real} - {-self.imag}i"
-            return f"{self.real} + {self.imag}i"
+            if self.im < 0:
+                return f"{self.re} - {-self.im}i"
+            return f"{self.re} + {self.im}i"
     c1 = Complex(2, 3)
     c2 = Complex(4, 5)
     c3 = c1 + c2
@@ -166,6 +169,7 @@ def factorial(n):
               \begin{itemize}
                   \item Function parameters: \python{def func(param: T) -> R:}
                   \item Variables: \python{var: T = value}
+                  \item Containers: \python{lst: list[T] = []}
               \end{itemize}
     \end{itemize}
     Example:
@@ -173,6 +177,7 @@ def factorial(n):
     def greet(name: str) -> str:
         return f"Hello, {name}!"
     age: int = 25
+    numbers: list[int] = [1, 2, 3]
     \end{minted}
 \end{frame}
 
