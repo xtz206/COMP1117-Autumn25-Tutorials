@@ -1,0 +1,515 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\newcommand{\python}[1]{\mintinline{python}|#1|}
+
+\title{COMP1117 Tutorial 8}
+\author{YUAN Wenxuan}
+\date{November 13, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Overview of Today's Tutorial}
+    \tableofcontents
+\end{frame}
+
+\section{Recap and Extensions}
+\subsection{Recap: Python String}
+\begin{frame}
+    \frametitle{Recap: String Index and Slicing}
+    \begin{itemize}
+        \item String is an immutable sequence of characters
+        \item Note: in Python, there is no separate \texttt{char} type
+        \item Syntactic sugar for negative index (just add length)
+        \item Note: \python{IndexError} if \texttt{i < -len}
+        \item Slicing syntax: \python{string[start:end:step]}
+        \item Note: Omitting \texttt{start}, \texttt{end}, or \texttt{step} \\
+              uses default values (0, length of string, 1 respectively)
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Recap: String Methods}
+    \begin{itemize}
+        \item Boolean methods: \python{isalpha()}, \python{isdigit()}, \python{islower()}, \python{isupper()}, \python{isspace()}
+        \item Searching methods: \python{find()}, \python{rfind()}, \python{index()}, \python{rindex()}
+        \item Modification methods: \python{lower()}, \python{upper()}, \python{strip()}, \python{replace()}
+        \item Splitting and joining: \python{split()}, \python{rsplit()}, \python{join()}
+        \item Note: String methods do not modify the original string, \\
+              they return a new string instead
+        \item Visit Python String Methods for more details at
+              \href{https://docs.python.org/3/library/stdtypes.html\#string-methods}
+              {https://docs.python.org/3/library/stdtypes.html\#string-methods}
+    \end{itemize}
+\end{frame}
+\subsection{Recap: File Operations}
+\begin{frame}[fragile]
+    \frametitle{Recap: File Operations}
+    \begin{itemize}
+        \small
+        \item File operations in Python are performed using built-in functions
+        \item Opening a file: \python{open(filename, mode)}
+        \item Common modes: \texttt{'r'} (read), \texttt{'w'} (write), \texttt{'a'} (append), \texttt{'b'} (binary)
+        \item Reading from a file: \python{file.read()}, \python{file.readline()}, \python{file.readlines()}
+        \item Writing to a file: \python{file.write(str)}, \python{file.writelines(list[str])}
+        \item Closing a file: \python{file.close()}
+        \item Using \texttt{with} context manager and for automatic file closing:
+        \begin{minted}{python}
+with open('file.txt', 'r') as file:
+    content = file.read()
+        \end{minted}
+        \item Using for-loop to read lines from a file (Memory efficient):
+        \begin{minted}{python}
+with open('file.txt', 'r') as file:
+    for line in file:
+        print(line)
+        \end{minted}
+    \end{itemize}
+\end{frame}
+\subsection{Recap: Error Handling}
+\begin{frame}[fragile]
+    \frametitle{Recap: Error Handling}
+    \begin{itemize}
+        \item In Tutorial 7, we have learned about error handling in Python
+        \item Syntax(try-except-finally):
+        \begin{minted}{python}
+try:
+    # code that may raise an exception
+except SomeException as e:
+    # code to handle the exception
+finally:
+    # code that will always execute
+        \end{minted}
+        \item You can have multiple \texttt{except} blocks to handle different exceptions
+        \item The \texttt{finally} block is optional and will always execute, regardless of whether an exception occurred or not
+        \item You can also use \texttt{raise} to raise exceptions manually
+        \item Syntax(raise):
+        \begin{minted}{python}
+raise SomeException("Error message")
+        \end{minted}
+    \end{itemize}
+\end{frame}
+
+\subsection{Extension: Modules and Packages}
+\begin{frame}[fragile]
+    \frametitle{Extension: Modules and Packages (Optioanl)}
+    \begin{itemize}
+        \item Modules are files containing Python code (functions, classes, etc.).
+        \item Create your own modules by saving code in a \texttt{.py} file
+        \item Packages are directories containing multiple modules
+        \item A package can contain a special file named \texttt{\_\_init\_\_.py} to initialize the package
+        \item Using \python{import} to import modules or packages:
+        \begin{minted}{python}
+import package_name.module_name
+from package_name import module_name as alias_name
+from module_name import * # Should be avoided
+        \end{minted}
+        \item Advantages:
+        \begin{itemize}
+            \item Code organization
+            \item Reusability
+            \item Namespace management
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Practice Time!}
+\begin{frame}
+    \frametitle{Time to Practice!}
+    \begin{itemize}
+        \item MCQs
+        \item Factorial
+        \item Combination
+        \item Ackermann function
+        \item Base conversion
+    \end{itemize}
+\end{frame}
+
+\subsection{MCQs}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ1}
+    What is the output of the following code?
+    \begin{minted}{python}
+def f1(x):
+    return x < -1
+L1 = [1, -2, -3, 4, 5]
+m1 = list(map(f1, L1))
+print(m1)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. Address of \texttt{m1}
+        \item C. \texttt{[-2, 3]}
+        \item D. \texttt{[False, True, True, False, False]}
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ1 Solution}
+    What is the output of the following code?
+    \begin{minted}{python}
+def f1(x):
+    return x < -1
+L1 = [1, -2, -3, 4, 5]
+m1 = list(map(f1, L1))
+print(m1)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. Address of \texttt{m1}
+        \item C. \texttt{[-2, 3]}
+        \item \alert{D. \texttt{[False, True, True, False, False]}}
+    \end{itemize}
+
+    Explanation:
+    % TODO: fill in mcq 1 explanation
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ2}
+    What is the output of the following code?
+    \begin{minted}{python}
+def f2(x):
+    return x < 2
+L2 = [1, -2, -3, 4, 5]
+m2 = list(filter(f2, L2))
+print(m2)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. Address of \texttt{m2}
+        \item C. \texttt{[1, -2, -3]}
+        \item D. \texttt{[True, True, True, False, False]}
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ2 Solution}
+    What is the output of the following code?
+    \begin{minted}{python}
+def f2(x):
+    return x < 2
+L2 = [1, -2, -3, 4, 5]
+m2 = list(filter(f2, L2))
+print(m2)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. Address of \texttt{m2}
+        \item \alert{C. \texttt{[1, -2, -3]}}
+        \item D. \texttt{[True, True, True, False, False]}
+    \end{itemize}
+
+    Explanation:
+    % TODO: fill in mcq 2 explanation
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ3}
+    What is the output of the following code?
+    \begin{minted}{python}
+L3 = [-2, 4]
+m3 = map(lambda x: x*2, L3)
+print(m3)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. Map object representing \texttt{m3}
+        \item C. \texttt{[-4, 8]}
+        \item D. None of the above
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ3 Solution}
+    What is the output of the following code?
+    \begin{minted}{python}
+L3 = [-2, 4]
+m3 = map(lambda x: x*2, L3)
+print(m3)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item \alert{B. Map object representing \texttt{m3}}
+        \item C. \texttt{[-4, 8]}
+        \item D. None of the above
+    \end{itemize}
+
+    Explanation:
+    % TODO: fill in mcq 3 explanation
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ4}
+    What is the output of the following code?
+    \begin{minted}{python}
+print(list(map(
+    (lambda x: x**2), 
+    filter((lambda x: x%2==0), range(10))
+)))
+    \end{minted}
+    \begin{itemize}
+        \item A. \texttt{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+        \item B. \texttt{[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]}
+        \item C. \texttt{[0, 4, 16, 36, 64]}
+        \item D. Error
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ4 Solution}
+    What is the output of the following code?
+    \begin{minted}{python}
+print(list(map(
+    (lambda x: x**2), 
+    filter((lambda x: x%2==0), range(10))
+)))
+    \end{minted}
+    \begin{itemize}
+        \item A. \texttt{[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]}
+        \item B. \texttt{[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]}
+        \item \alert{C. \texttt{[0, 4, 16, 36, 64]}}
+        \item D. Error
+    \end{itemize}
+
+    Explanation:
+    % TODO: fill in mcq 4 explanation
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ5}
+    What is the output of the following code?
+    \begin{minted}{python}
+def fun(n):
+    if (n > 100):
+        return n - 5
+    return fun(fun(n + 11))
+print(fun(98))
+    \end{minted}
+    \begin{itemize}
+        \item A. \texttt{98}
+        \item B. \texttt{99}
+        \item C. \texttt{100}
+        \item D. \python{RecursionError}
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: MCQ5 Solution}
+    What is the output of the following code?
+    \begin{minted}{python}
+def fun(n):
+    if (n > 100):
+        return n - 5
+    return fun(fun(n + 11))
+print(fun(98))
+    \end{minted}
+    \begin{itemize}
+        \item A. \texttt{98}
+        \item \alert{B. \texttt{99}}
+        \item C. \texttt{100}
+        \item D. \python{RecursionError}
+    \end{itemize}
+
+    Explanation:
+    \begin{minted}{text}
+fun(98) = fun(fun(109)) = fun(104) = 99
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Factorial}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Factorial}
+
+    Write a program to calculate the factorial of
+    a given number $n$ by using the recursive function.
+
+    Here is a recursive formula for Factorial:
+    $$
+        n! = n \times (n - 1)! \text{ and } 0! = 1
+    $$
+
+    Remarks: For more information about Factorial, you may visit this website
+    \href{https://en.wikipedia.org/wiki/Factorial}{https://en.wikipedia.org/wiki/Factorial}.
+
+    Examples:
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output \\ \hline
+            1     & 1      \\ \hline
+            5     & 120    \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Factorial Solution}
+
+    Solution:
+    \begin{minted}{python}
+def factorial(n):
+    if n <= 0:
+        return 1
+    return n * factorial(n - 1)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Combination}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Combination}
+
+    In mathematics, combinations refer to the combination of
+    $n$ things taken $k$ at a time without repetition.
+
+    There is a recursive formula related to combinations:
+    $$
+        _nC_r = _{n-1}C_{r-1} + _{n-1}C_r \text{ and }
+        _nC_0 = nC_n = 1, \ _nC_k = 0 \text{ for } k > n
+    $$
+
+    Write a Python program to calculate the value of
+    $_nC_r$ of the given $n$ and $r$ by using the recursive function.
+
+    Remarks: For more information about Combination, you may visit:
+    \href{https://en.wikipedia.org/wiki/Combination}{https://en.wikipedia.org/wiki/Combination}.
+
+    Examples (Newlines are replaced by spaces for simplicity):
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output \\ \hline
+            6 3   & 20     \\ \hline
+            8 1   & 8      \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Combination Solution}
+
+    Solution:
+    \begin{minted}{python}
+def combination(n, r):
+    if r == 0 or r == n:
+        return 1
+    if r > n:
+        return 0
+    return combination(n - 1, r - 1) + \
+        combination(n - 1, r)
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Ackermann function}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Ackermann function}
+
+    Implement Ackermann function by recursive function calls.
+    Ackermann function is defined as follows:
+    $$
+        A(m, n) = \begin{cases}
+            n + 1                 & \text{if } m = 0                    \\
+            A(m - 1, 1)           & \text{if } m > 0 \text{ and } n = 0 \\
+            A(m - 1, A(m, n - 1)) & \text{if } m > 0 \text{ and } n > 0
+        \end{cases}
+    $$
+
+    Examples (Newlines are replaced by spaces for simplicity):
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input & Output \\ \hline
+            1 2   & 4      \\ \hline
+            4 0   & 13     \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Ackermann function Solution}
+
+    Solution:
+    \begin{minted}{python}
+def ackermann(m, n):
+    if m == 0:
+        return n + 1
+    if n == 0:
+        return ackermann(m - 1, 1)
+    return ackermann(m - 1, ackermann(m, n - 1))
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Base conversion}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Base conversion}
+
+    Complete the code below by defining a recursive function which
+    converts a decimal integer $n$ to a string in base $b$.
+
+    You may assume the input $n$ is an integer in decimal and
+    the input $b$ is in the range 2 to 16, inclusively.
+
+    \begin{minted}{python}
+    n = int(input())
+    b = int(input())
+    print(convert_base(n, b))
+    \end{minted}
+
+
+    Examples (Newlines are replaced by spaces for simplicity):
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input   & Output \\ \hline
+            13 2    & 1101   \\ \hline
+            56 4    & 320    \\ \hline
+            1117 8  & 2135   \\ \hline
+            2019 16 & 7E3    \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Base conversion Solution}
+
+    Solution:
+    \begin{minted}{python}
+def convert_base(n: int, b: int) -> str:
+    # Check special cases (You may skip this part)
+    if b < 2 or b > 16:
+        raise ValueError("Base must be between 2 and 16")
+    if n < 0:
+        return "-" + convert_base(-n, b)
+    
+    if n == 0:
+        return "0"
+
+    digits = "0123456789ABCDEF"
+    if n < b:
+        return digits[n]
+    return convert_base(n // b, b) + digits[n % b]
+    \end{minted}
+\end{frame}
+
+\section{Q\&A and Reminders}
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask us in person right now
+        \item Post on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your tutorial 7 and 8 exercises before \textbf{November 21 23:59}!
+        \item Don't forget tutorial 6 exercises (due on \textbf{TOMORROW 23:59})!
+        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+              {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+    \end{itemize}
+\end{frame}
+
+\end{document}
