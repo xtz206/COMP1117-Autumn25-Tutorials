@@ -20,37 +20,71 @@
 \end{frame}
 
 \section{Recap and Extensions}
-\subsection{Recap: TODO1RC}
+\subsection{Recap: String Slicing}
 \begin{frame}
-    \frametitle{Recap: TODO1RC}
+    \frametitle{Recap: String Slicing}
     \begin{itemize}
-        % TODO: Recap items
-        \item
+        \item using colon \python{:} to slice strings
+        \item syntax: \python{str[start:end:step]}
+        \item default values: start = 0, end = len(str), step = 1
+        \item negative indices and steps
+        \item examples:
+              \begin{itemize}
+                  \item \python{"1234"[1:3] = "23"}
+                  \item \python{"1234"[-3:-1] = "23"}
+                  \item \python{"1234"[::-1] = "4321"}
+              \end{itemize}
     \end{itemize}
 \end{frame}
-\subsection{Recap: TODO2RC}
+\subsection{Recap: String Methods}
 \begin{frame}
-    \frametitle{Recap: TODO2RC}
+    \frametitle{Recap: String Methods}
     \begin{itemize}
-        % TODO: Recap items
-        \item
-    \end{itemize}
-\end{frame}
-\subsection{Recap: TODO3RC}
-\begin{frame}
-    \frametitle{Recap: TODO3RC}
-    \begin{itemize}
-        % TODO: Recap items
-        \item
+        \item Boolean methods: \python{isalpha()}, \python{isdigit()}, etc.
+        \item Searching methods: \python{find()}, \python{index()}, \python{count()}
+        \item Modification methods: \python{lower()}, \python{upper()}, \python{strip()}, \python{replace()}
+        \item Splitting and joining: \python{split()}, \python{join()}
+        \item Visit Python String Methods for more details at
+              \href{https://docs.python.org/3/library/stdtypes.html}
+              {https://docs.python.org/3/library/stdtypes.html}
     \end{itemize}
 \end{frame}
 
-\subsection{Extension: TODO1ET}
+\subsection{Recap: Higher-Order Functions and Lambdas}
 \begin{frame}
-    \frametitle{Extension: TODO1ET}
+    \frametitle{Recap: Higher-Order Functions and Lambdas}
     \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Functions as first-class citizens
+        \item Higher-order functions: functions that take other functions as arguments or return functions as results
+        \item Lambda: anonymous functions defined using the \python{lambda} keyword
+        \item Common higher-order functions: \python{map}, \python{filter}, \python{reduce}
+        \item Simple examples:
+              \begin{itemize}
+                  \item \python{map(int, input().split())} to convert input strings to integers
+                  \item \python{filter(lambda x: x > 0, numbers)} to filter positive numbers
+              \end{itemize}
+        \item See previous Tutorial for more details
+    \end{itemize}
+\end{frame}
+
+\subsection{Extension: Regex Basics}
+\begin{frame}
+    \frametitle{Extension: Regex Basics}
+    \begin{itemize}
+        \item Regex (Regular Expressions): a sequence of characters that define a search pattern
+        \item Common regex symbols:
+              \begin{itemize}
+                  \item \texttt{.}: any character except newline
+                  \item \texttt{*}: zero or more occurrences of the preceding element
+                  \item \texttt{+}: one or more occurrences of the preceding element
+                  \item \texttt{?}: zero or one occurrence of the preceding element
+                  \item \texttt{\textasciicircum}: start of string
+                  \item \texttt{\$}: end of string
+                  \item \texttt{[abc]}: any character in the set (a, b, or c)
+                  \item \texttt{[a-z]}: any character in the range (a to z)
+                  \item \texttt{\textbackslash}: escape special characters
+              \end{itemize}
+        \item Example: \texttt{\textasciicircum a.*b\$} matches any string that starts with 'a' and ends with 'b'
     \end{itemize}
 \end{frame}
 
@@ -59,9 +93,9 @@
     \frametitle{Time to Practice!}
     \begin{itemize}
         \item MCQs
-        \item TODO1EX
-        \item TODO2EX
-        \item TODO3EX
+        \item Last word of input
+        \item Max number in input
+        \item Check credit card number
     \end{itemize}
 \end{frame}
 
@@ -69,268 +103,364 @@
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ1}
     What is the output of the following code?
-    % TODO: fill in mcq 1 code
     \begin{minted}{python}
+s = "helloworld"
+print(s[1:4], s[:5], s[4:], s[0:-1], s[:-1])
     \end{minted}
-    % TODO: fill in mcq 1 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{ell hello oworld helloworl helloworl}
+        \item B. \texttt{ello hellow oworld helloworl lrowolleh}
+        \item C. \texttt{hel hello world helloworl helloworl}
+        \item D. \texttt{ell hello oworld helloworl lrowolleh}
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ1 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 1 code
     \begin{minted}{python}
+s = "helloworld"
+print(s[1:4], s[:5], s[4:], s[0:-1], s[:-1])
     \end{minted}
-    % TODO: fill in mcq 1 options and alert correct one
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item \alert{A. \texttt{ell hello oworld helloworl helloworl}}
+        \item B. \texttt{ello hellow oworld helloworl lrowolleh}
+        \item C. \texttt{hel hello world helloworl helloworl}
+        \item D. \texttt{ell hello oworld helloworl lrowolleh}
     \end{itemize}
-
-    Explanation:
-    % TODO: fill in mcq 1 explanation
 \end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ2}
     What is the output of the following code?
-    % TODO: fill in mcq 2 code
     \begin{minted}{python}
+s1 = "Application"
+s2 = s1.replace('a', 'A')
+print(s2)
     \end{minted}
-    % TODO: fill in mcq 2 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{Application}
+        \item B. \texttt{application}
+        \item C. \texttt{ApplicAtion}
+        \item D. \texttt{applicAtion}
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ2 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 2 code
     \begin{minted}{python}
+s1 = "Application"
+s2 = s1.replace('a', 'A')
+print(s2)
     \end{minted}
-    % TODO: fill in mcq 2 options and alert correct one
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{Application}
+        \item B. \texttt{application}
+        \item \alert{C. \texttt{ApplicAtion}}
+        \item D. \texttt{applicAtion}
     \end{itemize}
-
-    Explanation:
-    % TODO: fill in mcq 2 explanation
 \end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3}
     What is the output of the following code?
-    % TODO: fill in mcq 3 code
     \begin{minted}{python}
+s1 = "COMP,1117,Computer,Science"
+s2 = ' '.join(s1.split(','))
+print(s2)
     \end{minted}
-    % TODO: fill in mcq 3 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{COMP1117ComputerScience}
+        \item B. \texttt{C O M P 1 1 1 7 C o m p u t e r S c i e n c e}
+        \item C. \texttt{COMP,1117,Computer,Scince}
+        \item D. \texttt{COMP 1117 Computer Science}
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ3 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 3 code
     \begin{minted}{python}
+s1 = "COMP,1117,Computer,Science"
+s2 = ' '.join(s1.split(','))
+print(s2)
     \end{minted}
-    % TODO: fill in mcq 3 options and alert correct one
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. \texttt{COMP1117ComputerScience}
+        \item B. \texttt{C O M P 1 1 1 7 C o m p u t e r S c i e n c e}
+        \item C. \texttt{COMP,1117,Computer,Science}
+        \item \alert{D. \texttt{COMP 1117 Computer Science}}
     \end{itemize}
-
-    Explanation:
-    % TODO: fill in mcq 3 explanation
 \end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ4}
     What is the output of the following code?
-    % TODO: fill in mcq 4 code
     \begin{minted}{python}
+def f1(x):
+    return x < -1
+
+L1 = [1, -2, -3, 4, 5]
+m1 = list(map(f1, L1))
+print(m1)
     \end{minted}
-    % TODO: fill in mcq 4 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. Error
+        \item B. \texttt{<map object at 0x...>}
+        \item C. \texttt{[-2, -3]}
+        \item D. \texttt{[False, True, True, False, False]}
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ4 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 4 code
     \begin{minted}{python}
-    \end{minted}
-    % TODO: fill in mcq 4 options and alert correct one
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+def f1(x):
+    return x < -1
 
-    Explanation:
-    % TODO: fill in mcq 4 explanation
+L1 = [1, -2, -3, 4, 5]
+m1 = list(map(f1, L1))
+print(m1)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B. \texttt{<map object at 0x...>}
+        \item C. \texttt{[-2, -3]}
+        \item \alert{D. \texttt{[False, True, True, False, False]}}
+    \end{itemize}
 \end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ5}
     What is the output of the following code?
-    % TODO: fill in mcq 5 code
     \begin{minted}{python}
+def f2(x):
+    return x < 2
+
+L2 = [1, -2, -3, 4, 5]
+m2 = list(filter(f2, L2))
+print(m2)
     \end{minted}
-    % TODO: fill in mcq 5 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. Error
+        \item B.\texttt{<filter object at 0x...>}
+        \item C. \texttt{[1, -2, -3]}
+        \item D. \texttt{[True, True, True, False, False]}
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ5 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 5 code
     \begin{minted}{python}
-    \end{minted}
-    % TODO: fill in mcq 5 options and alert correct one
-    \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
-    \end{itemize}
+def f2(x):
+    return x < 2
 
-    Explanation:
-    % TODO: fill in mcq 5 explanation
+L2 = [1, -2, -3, 4, 5]
+m2 = list(filter(f2, L2))
+print(m2)
+    \end{minted}
+    \begin{itemize}
+        \item A. Error
+        \item B.\texttt{<filter object at 0x...>}
+        \item \alert{C. \texttt{[1, -2, -3]}}
+        \item D. \texttt{[True, True, True, False, False]}
+    \end{itemize}
 \end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ6}
     What is the output of the following code?
-    % TODO: fill in mcq 6 code
     \begin{minted}{python}
+L3 = [-2, 4]
+m3 = map(lambda x: x*2, L3)
+print(m3)
     \end{minted}
-    % TODO: fill in mcq 6 options
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. Error
+        \item B. \texttt{<map object at 0x...>}
+        \item C. \texttt{[-4, 8]}
+        \item D. None of the above
     \end{itemize}
 \end{frame}
 \begin{frame}[fragile]
     \frametitle{Practice Time: MCQ6 Solution}
     What is the output of the following code?
-    % TODO: fill in mcq 6 code
     \begin{minted}{python}
+L3 = [-2, 4]
+m3 = map(lambda x: x*2, L3)
+print(m3)
     \end{minted}
-    % TODO: fill in mcq 6 options and alert correct one
     \begin{itemize}
-        \item A.
-        \item B.
-        \item C.
-        \item D.
+        \item A. Error
+        \item \alert{B. Address of m3 (a map object)}
+        \item C. \texttt{[-4, 8]}
+        \item D. None of the above
+    \end{itemize}
+\end{frame}
+
+\subsection{Exercise: Last word of input}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Last word of input}
+
+    Write a program that reads in a string $s$
+    and then prints the last word in $s$.
+
+    Note:
+
+    The input string can contain letters, spaces and period symbols.
+    The last word should only contain letters. You may need to remove
+    the unnecessary symbol (e.g., period symbol) in the word.
+
+    Hint:
+    \begin{itemize}
+        \item Use \python{str.split()} to obtain possible words
+        \item Use negative index to get last word and last letter
     \end{itemize}
 
-    Explanation:
-    % TODO: fill in mcq 6 explanation
-\end{frame}
-
-\subsection{Exercise: TODO1EX}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: TODO1EX}
-
-    % TODO: fill in description of TODO1EX
-
     Examples:
-
-    % TODO: fill in examples of TODO1EX
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline
-            Input & Output \\ \hline
-                  &        \\ \hline
-                  &        \\ \hline
+            Input                                 & Output           \\ \hline
+            \texttt{Hello world.}                 & \texttt{world}   \\ \hline
+            \texttt{This item sells for ten HKD.} & \texttt{HKD}     \\ \hline
+            \texttt{This is an example}           & \texttt{example} \\ \hline
         \end{tabular}
     \end{center}
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO1EX Solution}
+    \frametitle{Practice Time: Last word of input Solution}
 
-    Solution:
-    % TODO: fill in solution of TODO1EX
+    Solution using \python{filter()} and \python{str.isalpha()}:
     \begin{minted}{python}
+word = input().split()[-1]
+result = ''.join(filter(str.isalpha, word))
+print(result)
+    \end{minted}
+    Alternative one-liner:
+    \python{print(input().strip().split()[-1][-1])}
+
+    Solution using \python{for} loop:
+    \begin{minted}{python}
+word = input().split()[-1]
+result = ""
+for char in word:
+    if char.isalpha():
+        result += char
+print(result)
     \end{minted}
 \end{frame}
 
-\subsection{Exercise: TODO2EX}
+\subsection{Exercise: Max number in input}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO2EX}
+    \frametitle{Practice Time: Max number in input}
 
-    % TODO: fill in description of TODO2EX
+    Write a program that read a line of digit-strings
+    separated by comma and print the max number in them.
+
+    Hints:
+    \begin{itemize}
+        \item Use \python{str.split()} to obtain number strings
+        \item Convert the strings to integers
+        \item Compare the values
+    \end{itemize}
 
     Examples:
-
-    % TODO: fill in examples of TODO2EX
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline
-            Input & Output \\ \hline
-                  &        \\ \hline
-                  &        \\ \hline
+            Input                       & Output       \\ \hline
+            \texttt{123,456,879,100}    & \texttt{879} \\ \hline
+            \texttt{1,2,3,45,678,50,-4} & \texttt{678} \\ \hline
+            \texttt{8,9,10,4,8}         & \texttt{10}  \\ \hline
         \end{tabular}
     \end{center}
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO2EX Solution}
+    \frametitle{Practice Time: Max number in input Solution}
 
-    Solution:
-    % TODO: fill in solution of TODO2EX
+    Solution using \python{max()} and \python{map()}:
     \begin{minted}{python}
+strings = input().split(',')
+numbers = list(map(int, strings))
+print(max(numbers))
+    \end{minted}
+
+    Solution using \python{for} loop:
+    \begin{minted}{python}
+strings = input().split(',')
+result = int(strings[0])
+for string in strings:
+    number = int(string)
+    if number > result:
+        result = number
+print(result)
     \end{minted}
 \end{frame}
 
-\subsection{Exercise: TODO3EX}
+\subsection{Exercise: Check credit card number}
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO3EX}
+    \frametitle{Practice Time: Check credit card number}
 
-    % TODO: fill in description of TODO3EX
+    Write a program that read a line of credit card number
+    which each 4-digit parts are separated by space and
+    use the Luhn Algorithm to check if the card number is valid.
+
+    Luhn Algorithm is descripted as in the next frame.
+    You need to use the Luhn Algorithm to check
+    if the calculated check digit is the same as the one from the input.
 
     Examples:
 
-    % TODO: fill in examples of TODO3EX
     \begin{center}
         \begin{tabular}{|c|c|}
             \hline
-            Input & Output \\ \hline
-                  &        \\ \hline
-                  &        \\ \hline
+            Input                        & Output           \\ \hline
+            \texttt{5190 9902 8192 5290} & \texttt{Invalid} \\ \hline
+            \texttt{6823 1198 3424 8189} & \texttt{Valid}   \\ \hline
+            \texttt{3716 8200 1927 1998} & \texttt{Valid}   \\ \hline
         \end{tabular}
     \end{center}
 \end{frame}
+
 \begin{frame}[fragile]
-    \frametitle{Practice Time: TODO3EX Solution}
+    \frametitle{Practice Time: Check credit card number}
+
+    Luhn Algorithm Procedures:
+    \begin{enumerate}
+        \small
+        \item Remove the check digit (last digit) from the card number.
+        \item Calculate the check digit
+              \begin{enumerate}
+                  \item Take the number and start from the rightmost digit
+                        and move to left, double the value of every second digit.
+                        (including the rightmost digit).
+                  \item Calculate the sum of the digits of the result for each position.
+                  \item Sum up the resulting values from all positions as $s$.
+                  \item The calculated check digit is $10 - (s \mod 10)$.
+              \end{enumerate}
+        \item Compare your result with the check digit from input.
+              The card number is valid if they are the same.
+    \end{enumerate}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Check credit card number Solution}
 
     Solution:
-    % TODO: fill in solution of TODO3EX
     \begin{minted}{python}
+def calc_check_digit(digits: list[int]) -> int:
+    result = 0
+    for index in range(len(digits)):
+        digit = digits[-index - 1]
+        if index % 2 == 0:
+            digit *= 2
+        if digit > 9:
+            digit -= 9
+        result += digit  # at most 2 digits
+    return (10 - (result % 10)) % 10
+digits = list(map(int, input().replace(' ', '')))
+if calc_check_digit(digits[:-1]) == digits[-1]:
+    print("Valid")
+else:
+    print("Invalid")
     \end{minted}
 \end{frame}
 
@@ -356,7 +486,7 @@
         \item Happy Coding!
         \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
         \item Submit your tutorial 9 exercises before \textbf{November 28 23:59}!
-        \item Don't forget tutorial 9 exercises\\(due on \textbf{TOMORROW November 21 23:59})!
+        \item Don't forget tutorial 7 and 8 exercises\\(due on \textbf{TOMORROW November 21 23:59})!
         \item Bonus: \LaTeX source code and compiled pdf of this slides available at
               \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
               {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
