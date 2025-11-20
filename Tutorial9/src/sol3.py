@@ -5,9 +5,9 @@ def calc_check_digit(digits: list[int]) -> int:
         if index % 2 == 0:
             digit *= 2
         if digit > 9:
-            digit -= 9
-        result += digit  # at most 2 digits
-    return (10 - (result % 10)) % 10
+            digit -= 9  # at most 2 digits
+        result += digit
+    return 10 - (result % 10)
 
 digits = list(map(int, input().replace(' ', '')))
 if calc_check_digit(digits[:-1]) == digits[-1]:
