@@ -20,45 +20,62 @@
 \end{frame}
 
 \section{Recap and Extensions}
-\subsection{Recap: TODO1RC}
+\subsection{Recap: More on Containers}
 \begin{frame}
-    \frametitle{Recap: TODO1RC}
+    \frametitle{Recap: Dictionary}
     \begin{itemize}
-        % TODO: Recap items
-        \item
+        \item Use \python{dict.get(key, default)} to safely access values
+              without raising \python{KeyError}.
+        \item Use \python{dict.keys()}, \python{dict.values()},
+              and \python{dict.items()} to iterate over keys, values,
+              and key-value pairs respectively.
+        \item Use \python{in} keyword to check for key existence in a dictionary.
+        \item Use \python{del} keyword to remove an item from a dictionary by key.
     \end{itemize}
 \end{frame}
-\subsection{Recap: TODO2RC}
 \begin{frame}
-    \frametitle{Recap: TODO2RC}
+    \frametitle{Recap: Tuple}
     \begin{itemize}
         % TODO: Recap items
-        \item
+        \item Tuples are immutable sequences, defined using parentheses \python{()}.
+        \item Use indexing and slicing to access elements in a tuple.
+        \item Tuples can be used as keys in dictionaries due to their immutability.
+        \item Packing and unpacking can be used to assign multiple values at once.
+        \item Try to modify a tuple will raise \python{TypeError}.
     \end{itemize}
 \end{frame}
-\subsection{Recap: TODO3RC}
+\subsection{Recap: Packing and Unpacking}
 \begin{frame}
-    \frametitle{Recap: TODO3RC}
+    \frametitle{Recap: Packing and Unpacking}
     \begin{itemize}
         % TODO: Recap items
-        \item
+        \item Packing: grouping multiple values into a single tuple, e.g. \python{t = 1, 2, 3}.
+        \item Unpacking: assign elements of a sequence to variables, e.g. \python{a, b = (1, 2)}.
+        \item Extended unpacking: grab remaining items with \python{*}, e.g. \python{head, *tail = [1,2,3,4]}.
+        \item Ignore values with underscore, e.g. \python{a, _, c = (1, 2, 3)}.
+        \item Swap variables succinctly: \python{a, b = b, a}.
+        \item Use unpacking in loops and function calls, e.g. \python{for x, y in pairs: ...} and \python{f(*args, **kwargs)}.
+        \item Packing/unpacking works with lists, tuples and other iterables; types must match the number of targets (unless using \python{*}).
     \end{itemize}
 \end{frame}
 
-\subsection{Extension: TODO1ET}
+\subsection{Extension: OS Module}
 \begin{frame}
-    \frametitle{Extension: TODO1ET}
+    \frametitle{Extension: OS Module}
     \begin{itemize}
-        % TODO: Extension items
-        \item
-    \end{itemize}
-\end{frame}
-\subsection{Extension: TODO2ET}
-\begin{frame}
-    \frametitle{Extension: TODO2ET}
-    \begin{itemize}
-        % TODO: Extension items
-        \item
+        \item Use \python{import os} to access operating system functionalities.
+        \item Common functions:
+              \begin{itemize}
+                  \item \python{os.getcwd()}: Get current working directory.
+                  \item \python{os.chdir(path)}: Change current working directory.
+                  \item \python{os.listdir(path)}: List files and directories in the specified path.
+                  \item \python{os.mkdir(path)}: Create a new directory.
+                  \item \python{os.remove(path)}: Delete a file.
+                  \item \python{os.rmdir(path)}: Remove an empty directory.
+                  \item \python{os.path.join(path, *paths)}: Join multiple path components.
+                  \item \python{os.path.exists(path)}: Check if a path exists.
+              \end{itemize}
+        \item Useful for file and directory management tasks.
     \end{itemize}
 \end{frame}
 
