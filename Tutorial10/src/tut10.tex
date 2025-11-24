@@ -1,0 +1,343 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{minted}
+
+\newcommand{\python}[1]{\mintinline{python}|#1|}
+
+\title{COMP1117 Tutorial 10}
+\author{YUAN Wenxuan}
+\date{November 27, 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Overview of Today's Tutorial}
+    \tableofcontents
+\end{frame}
+
+\section{Recap and Extensions}
+\subsection{Recap: TODO1RC}
+\begin{frame}
+    \frametitle{Recap: TODO1RC}
+    \begin{itemize}
+        % TODO: Recap items
+        \item
+    \end{itemize}
+\end{frame}
+\subsection{Recap: TODO2RC}
+\begin{frame}
+    \frametitle{Recap: TODO2RC}
+    \begin{itemize}
+        % TODO: Recap items
+        \item
+    \end{itemize}
+\end{frame}
+\subsection{Recap: TODO3RC}
+\begin{frame}
+    \frametitle{Recap: TODO3RC}
+    \begin{itemize}
+        % TODO: Recap items
+        \item
+    \end{itemize}
+\end{frame}
+
+\subsection{Extension: TODO1ET}
+\begin{frame}
+    \frametitle{Extension: TODO1ET}
+    \begin{itemize}
+        % TODO: Extension items
+        \item
+    \end{itemize}
+\end{frame}
+\subsection{Extension: TODO2ET}
+\begin{frame}
+    \frametitle{Extension: TODO2ET}
+    \begin{itemize}
+        % TODO: Extension items
+        \item
+    \end{itemize}
+\end{frame}
+
+\section{Practice Time!}
+\begin{frame}
+    \frametitle{Time to Practice!}
+    \begin{itemize}
+        \item Personal Diary
+        \item Simple User Registration System
+        \item File Content Copier
+        \item Robust Grade Converter
+    \end{itemize}
+\end{frame}
+
+
+\subsection{Exercise: Personal Diary}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Personal Diary}
+
+    Background:
+    Create a simple diary program that allows a user to record their thoughts
+    for the day. Each new entry should be saved without overwriting previous entries.
+
+    Task: Write a Python program that:
+    \begin{enumerate}
+        \item Prompts the user to enter the current date (e.g., "2023-12-05").
+        \item Prompts the user to enter a single-line diary entry.
+        \item Formats the user's input into the string: \python{"[Date]: [Diary Entry]"}.
+        \item Appends the formatted string to a file named \texttt{diary.txt}.
+        \item Each time the program is run, the new diary entry should
+              be added to the end of the file.
+        \item The program should automatically create \texttt{diary.txt} if it does not already exist.
+    \end{enumerate}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Personal Diary (Cont.)}
+    Example Interaction:
+    \begin{minted}{text}
+Enter today's date (YYYY-MM-DD):
+2023-12-05
+What's on your mind today?
+Learned about file I/O in Python. It was fun!
+    \end{minted}
+    After the first run, \texttt{diary.txt} should contain:
+    \begin{minted}{text}
+[2023-12-05]: Learned about file I/O in Python. It was fun!
+    \end{minted}
+    After a second run, it might look like:
+    \begin{minted}{text}
+[2023-12-05]: Learned about file I/O in Python. It was fun!
+[2023-12-06]: Practiced exception handling. 
+    The try-except block is very useful.
+    \end{minted}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Personal Diary Solution}
+
+    Solution:
+    \begin{minted}{python}
+def main():
+    date = input("Enter today's date (YYYY-MM-DD): ")
+    entry = input("What's on your mind today? ")
+    result = f"[{date}]: {entry}\n"
+    with open("diary.txt", "a") as file:
+        file.write(result)
+    print("Diary entry saved successfully.")
+main()
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Simple User Registration System}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Simple User Registration System}
+    Background:
+    Simulate a simple user registration system
+    where new usernames are stored in a file.
+    To prevent duplicate accounts, the program must check if a username
+    already exists before adding a new one.
+
+    Tasks: Write a Python program to manage a user list in file
+    name \texttt{users.txt} (one username per line).
+    \begin{enumerate}
+        \small
+        \item Prompt a new user to enter their desired username.
+        \item Read the entire \texttt{users.txt} file to check if
+              the new username already exists.
+              Be careful to handle the newline characters
+              \python{"\n"} properly.
+              at the end of each line for accurate matching.
+        \item If the username \textbf{already exists}, print the message:
+              \python{"Username '[username]' already exists."}
+              \python{"Please choose another one."}.
+        \item If the username \textbf{does not exist}, append the new username
+              to the end of \texttt{users.txt} and print a success message:
+              \python{"Username '[username]' registered successfully."}
+        \item \textbf{Exception Handling:} The first time the program runs,
+              \texttt{users.txt} may not exist.
+              The program should handle this case without error and
+              proceed to register the new user (as any username will be unique).
+    \end{enumerate}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Simple User Registration System (Cont.)}
+    Example Interaction:
+
+    First Run (when \texttt{users.txt} does not exist):
+    \begin{minted}{text}
+Enter a username to register: admin
+User 'admin' registered successfully.
+    \end{minted}
+    Second Run (registering an existing username):
+    \begin{minted}{text}
+Enter a username to register: admin
+Username 'admin' already exists. Please choose another one.
+    \end{minted}
+    Third Run (registering a new username):
+    \begin{minted}{text}
+Enter a username to register: guest
+User 'guest' registered successfully.
+    \end{minted}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Simple User Registration System Solution}
+
+    Solution:
+    \begin{minted}[fontsize=\small]{python}
+def main():
+    filename = "users.txt"
+    username = input("Enter a username to register: ")
+    try:
+        with open(filename, 'r') as file:
+            if username in (line.strip() for line in file):
+                print(f"Username '{username}' already exists. "
+                      f"Please choose another one.")
+                return
+    except FileNotFoundError:
+        pass
+    with open(filename, 'a') as file:
+        file.write(username + '\n')
+    print(f"User '{username}' registered successfully.")
+    main()
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: File Content Copier}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: File Content Copier}
+
+    Background:
+    Copying a file is a fundamental computer operation.
+    We need to write a program that accurately duplicates
+    the entire content of one file into a new file.
+
+    Tasks: Write a Python program that:
+    \begin{enumerate}
+        \small
+        \item First, manually create a file named \texttt{source.txt}
+              and write a few lines of text into it.
+        \item When the program runs, it should read
+              the entire content of \texttt{source.txt}.
+        \item The program will then write this content
+              into a new file named \texttt{destination.txt}.
+        \item If \texttt{destination.txt} already exists,
+              its content should be completely overwritten.
+        \item \textbf{Exception Handling:}
+              If \texttt{source.txt} does not exist (\python{FileNotFoundError}),
+              the program should not crash. Instead, it should print the error message:
+              \python{"Error: source.txt not found. Connot perform copy."} and exit gracefully.
+        \item Use the \python{with} statement to ensure files
+              are automatically closed after the operations.
+    \end{enumerate}
+
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: File Content Copier Solution}
+
+    Solution:
+    \begin{minted}[fontsize=\small]{python}
+def main():
+    source_filename = "source.txt"
+    destination_filename = "destination.txt"
+    try:
+        with open(source_filename, 'r') as source_file:
+            content = source_file.read()
+        with open(destination_filename, 'w') as dest_file:
+            dest_file.write(content)
+        print(f"Successfully copied content from "
+              f"'{source_filename}' to '{destination_filename}'.")
+    except FileNotFoundError:
+        print("Error: source.txt not found. "
+              "Cannot perform copy.")
+main()
+\end{minted}
+\end{frame}
+
+\subsection{Exercise: Robust Grade Converter}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Robust Grade Converter}
+    Background:
+    We need a tool to convert a numerical score (0-100) into a
+    letter grade (A, B, C, D, F).
+    This tool must be robust enough
+    to handle various invalid user inputs,
+    such as text or out-of range numbers.
+
+    Tasks: Write a Python program that:
+    \begin{enumerate}
+        \small
+        \item Continuously prompts the user to enter a score between 0 and 100 in a loop.
+        \item \textbf{Exception Handling:} Use a \python{try-except} block to
+              handle the user's input. If the input is not a valid number,
+              the program should catch the \python{ValueError}, and print
+              \python{"Invalid input. Please enter a number."} and continue the loop.
+        \item If the input is a valid number, check if it is within the range of 0 to 100.
+              If the score is \textbf{out of range} (less than 0 or greater than 100),
+              print \python{"Error: Score must be between 0 and 100."}.
+        \item If the score is valid and in range, print the corresponding letter grade
+              according to the rules below, and then \textbf{break the loop} to end the program:
+              90-100: A, 80-89: B, 70-79: C, 60-69: D, 0-59: F.
+    \end{enumerate}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Robust Grade Converter Solution}
+
+    Solution:
+    \begin{minted}[fontsize=\tiny]{python}
+def main():
+    while True:
+        text = input("Enter a score (0-100): ")
+        try:
+            score = float(text)
+            if score < 0 or score > 100:
+                print("Error: Score must be between 0 and 100.")
+                continue
+            if score >= 90:
+                grade = 'A'
+            elif score >= 80:
+                grade = 'B'
+            elif score >= 70:
+                grade = 'C'
+            elif score >= 60:
+                grade = 'D'
+            else:
+                grade = 'F'
+            print(f"Grade: {grade}")
+            break
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+main()
+    \end{minted}
+\end{frame}
+
+\section{Q\&A and Reminders}
+\begin{frame}
+    \frametitle{Any Questions?}
+
+    Feel free to ask us about the tutorials and python coding!
+
+    \begin{itemize}
+        \item Contact us via email
+        \item Ask us in person right now
+        \item Post on Moodle or Ed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Thank You!}
+
+    Enjoy your coding journey in Python!
+
+    \begin{itemize}
+        \item Happy Coding!
+        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Submit your tutorial 10 exercises before \textbf{December 1 23:59}!
+        \item Don't forget tutorial 9 exercises\\(due on \textbf{TOMORROW November 28 23:59})!
+        \item Bonus: \LaTeX source code and compiled pdf of this slides available at
+              \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+              {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
+    \end{itemize}
+\end{frame}
+
+\end{document}
