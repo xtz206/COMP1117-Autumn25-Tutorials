@@ -36,7 +36,6 @@
 \begin{frame}
     \frametitle{Recap: Tuple}
     \begin{itemize}
-        % TODO: Recap items
         \item Tuples are immutable sequences, defined using parentheses \python{()}.
         \item Use indexing and slicing to access elements in a tuple.
         \item Tuples can be used as keys in dictionaries due to their immutability.
@@ -48,7 +47,6 @@
 \begin{frame}
     \frametitle{Recap: Packing and Unpacking}
     \begin{itemize}
-        % TODO: Recap items
         \item Packing: grouping multiple values into a single tuple, e.g. \python{t = 1, 2, 3}.
         \item Unpacking: assign elements of a sequence to variables, e.g. \python{a, b = (1, 2)}.
         \item Extended unpacking: grab remaining items with \python{*}, e.g. \python{head, *tail = [1,2,3,4]}.
@@ -220,57 +218,6 @@ main()
     \end{minted}
 \end{frame}
 
-\subsection{Exercise: File Content Copier}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: File Content Copier}
-
-    Background:
-    Copying a file is a fundamental computer operation.
-    We need to write a program that accurately duplicates
-    the entire content of one file into a new file.
-
-    Tasks: Write a Python program that:
-    \begin{enumerate}
-        \small
-        \item First, manually create a file named \texttt{source.txt}
-              and write a few lines of text into it.
-        \item When the program runs, it should read
-              the entire content of \texttt{source.txt}.
-        \item The program will then write this content
-              into a new file named \texttt{destination.txt}.
-        \item If \texttt{destination.txt} already exists,
-              its content should be completely overwritten.
-        \item \textbf{Exception Handling:}
-              If \texttt{source.txt} does not exist (\python{FileNotFoundError}),
-              the program should not crash. Instead, it should print the error message:
-              \python{"Error: source.txt not found. Connot perform copy."} and exit gracefully.
-        \item Use the \python{with} statement to ensure files
-              are automatically closed after the operations.
-    \end{enumerate}
-
-\end{frame}
-\begin{frame}[fragile]
-    \frametitle{Practice Time: File Content Copier Solution}
-
-    Solution:
-    \begin{minted}[fontsize=\small]{python}
-def main():
-    source_filename = "source.txt"
-    destination_filename = "destination.txt"
-    try:
-        with open(source_filename, 'r') as source_file:
-            content = source_file.read()
-        with open(destination_filename, 'w') as dest_file:
-            dest_file.write(content)
-        print(f"Successfully copied content from "
-              f"'{source_filename}' to '{destination_filename}'.")
-    except FileNotFoundError:
-        print("Error: source.txt not found. "
-              "Cannot perform copy.")
-main()
-\end{minted}
-\end{frame}
-
 \subsection{Exercise: Robust Grade Converter}
 \begin{frame}[fragile]
     \frametitle{Practice Time: Robust Grade Converter}
@@ -301,7 +248,7 @@ main()
     \frametitle{Practice Time: Robust Grade Converter Solution}
 
     Solution:
-    \begin{minted}[fontsize=\tiny]{python}
+    \begin{minted}[fontsize=\small]{python}
 def main():
     while True:
         text = input("Enter a score (0-100): ")
@@ -314,16 +261,103 @@ def main():
                 grade = 'A'
             elif score >= 80:
                 grade = 'B'
-            elif score >= 70:
-                grade = 'C'
-            elif score >= 60:
-                grade = 'D'
-            else:
-                grade = 'F'
+            pass # ... continue the grading logic
             print(f"Grade: {grade}")
             break
         except ValueError:
             print("Invalid input. Please enter a number.")
+main()
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Palindrome}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Palindrome}
+    Background:
+    Write a program to read a positive integer number $n$.
+    Use while-loop(s) to solve this exercise.
+    If $n$ is a palindrome, print \python{"YES"}. Otherwise, print \python{"NO"}.
+
+    Examples:
+
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Input        & Output       \\ \hline
+            \texttt{1}   & \texttt{YES} \\ \hline
+            \texttt{10}  & \texttt{NO}  \\ \hline
+            \texttt{101} & \texttt{YES} \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Palindrome Solution}
+
+    Solution:
+    \begin{minted}{python}
+def is_palindrome(n):
+    original = str(n)
+    reverse = ''
+    while n > 0:
+        digit = n % 10
+        reverse += str(digit)
+        n //= 10
+    return original == reversed_num
+def main():
+    n = int(input())
+    if is_palindrome(n):
+        print("YES")
+    else:
+        print("NO")
+main()
+    \end{minted}
+\end{frame}
+
+\subsection{Exercise: Widest Fragment in a Sequence}
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Widest Fragment in a Sequence}
+    Write a program to read a sequence of integer numbers
+    ending with \texttt{0}.
+
+    Determine the length of the widest fragment
+    (consecutive sub-sequence) where
+    all the elements are equal to each other.
+
+    Examples (newlines are replaced by spaces for clarity):
+    \begin{center}
+        \begin{tabular}{|l|c|}
+            \hline
+            Input                        & Output     \\ \hline
+            \texttt{0}                   & \texttt{0} \\ \hline
+            \texttt{1 2 3 4 5 0}         & \texttt{1} \\ \hline
+            \texttt{3 3 3 3 0}           & \texttt{4} \\ \hline
+            \texttt{1 1 2 2 2 2 3 3 3 0} & \texttt{4} \\ \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Practice Time: Widest Fragment in a Sequence Solution}
+
+    Solution:
+    \begin{minted}[fontsize=\small]{python}
+def main():
+    max_length = 0
+    current_length = 0
+    previous_number = None
+    while True:
+        current_number = int(input())
+        if current_number == 0:
+            break
+        if current_number == previous_number:
+            current_length += 1
+        else:
+            current_length = 1
+            previous_number = current_number
+        if current_length > max_length:
+            max_length = current_length
+    print(max_length)
 main()
     \end{minted}
 \end{frame}
@@ -349,7 +383,7 @@ main()
     \begin{itemize}
         \item Happy Coding!
         \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
-        \item Submit your tutorial 10 exercises before \textbf{December 1 23:59}!
+        \item Submit your tutorial 10 exercises before \textbf{December 5 23:59}!
         \item Don't forget tutorial 9 exercises\\(due on \textbf{TOMORROW November 28 23:59})!
         \item Bonus: \LaTeX source code and compiled pdf of this slides available at
               \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
