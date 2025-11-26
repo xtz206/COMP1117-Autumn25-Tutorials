@@ -10,11 +10,12 @@ def main():
                 )
                 return
     except FileNotFoundError:
-        pass  # File does not exist, proceed to register the user
+        pass
 
     with open(filename, "a") as file:
         file.write(username + "\n")
     print(f"User '{username}' registered successfully.")
+
 
 if __name__ == "__main__":
     main()

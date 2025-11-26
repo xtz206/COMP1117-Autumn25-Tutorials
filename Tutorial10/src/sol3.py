@@ -1,19 +1,23 @@
 def main():
-    filename = "users.txt"
-    username = input("Enter a username to register: ")
+    text = input()
     try:
-        with open(filename, "r") as file:
-            if username in (line.strip() for line in file):
-                print(
-                    f"Username '{username}' already exists. "
-                    f"Please choose another one."
-                )
-                return
-    except FileNotFoundError:
-        pass
-    with open(filename, "a") as file:
-        file.write(username + "\n")
-    print(f"User '{username}' registered successfully.")
+        score = float(text)
+        if score < 0 or score > 100:
+            print("Error: Score must be between 0 and 100.")
+            return
+        elif score >= 90:
+            grade = "A"
+        elif score >= 80:
+            grade = "B"
+        elif score >= 70:
+            grade = "C"
+        elif score >= 60:
+            grade = "D"
+        else:
+            grade = "F"
+        print(f"Grade: {grade}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
 
 if __name__ == "__main__":
