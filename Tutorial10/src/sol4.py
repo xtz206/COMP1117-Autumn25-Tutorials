@@ -1,11 +1,11 @@
-def is_palindrome(n: int) -> bool:
-    original = str(n)
-    reverse = ""
-    while n > 0:
-        digit = n % 10
-        reverse += str(digit)
-        n //= 10
-    return original == reverse
+def is_palindrome(number: int) -> bool:
+    original_number = str(number)
+    reversed_number = ""
+    while number > 0:
+        digit = number % 10
+        reversed_number += str(digit)
+        number //= 10
+    return original_number == reversed_number
 
 
 def main():

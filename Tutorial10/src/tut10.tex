@@ -83,8 +83,9 @@
     \begin{itemize}
         \item Personal Diary
         \item Simple User Registration System
-        \item File Content Copier
         \item Robust Grade Converter
+        \item Palindrome
+        \item Widest Fragment in a Sequence
     \end{itemize}
 \end{frame}
 
@@ -231,7 +232,7 @@ main()
     Tasks: Write a Python program that:
     \begin{enumerate}
         \small
-        \item Continuously prompts the user to enter a score between 0 and 100 in a loop.
+        \item Prompts the user once to enter a score between 0 and 100 in a loop.
         \item \textbf{Exception Handling:} Use a \python{try-except} block to
               handle the user's input. If the input is not a valid number,
               the program should catch the \python{ValueError}, and print
@@ -240,7 +241,7 @@ main()
               If the score is \textbf{out of range} (less than 0 or greater than 100),
               print \python{"Error: Score must be between 0 and 100."}.
         \item If the score is valid and in range, print the corresponding letter grade
-              according to the rules below, and then \textbf{break the loop} to end the program:
+              according to the rules below, and then end the program:
               90-100: A, 80-89: B, 70-79: C, 60-69: D, 0-59: F.
     \end{enumerate}
 \end{frame}
@@ -296,14 +297,14 @@ main()
 
     Solution:
     \begin{minted}{python}
-def is_palindrome(n):
-    original = str(n)
-    reverse = ''
-    while n > 0:
-        digit = n % 10
-        reverse += str(digit)
-        n //= 10
-    return original == reversed_num
+def is_palindrome(number):
+    original_number = str(number)
+    reversed_number = ""
+    while number > 0:
+        digit = number % 10
+        reversed_number += str(digit)
+        number //= 10
+    return original_number == reversed_number
 def main():
     n = int(input())
     if is_palindrome(n):
@@ -381,10 +382,9 @@ main()
     Enjoy your coding journey in Python!
 
     \begin{itemize}
-        \item Happy Coding!
-        \item See you in the next tutorial (HW311, 10:00 - 11:50, Thursday)
+        \item Happy Coding and Good Luck in Your Final Exam!
         \item Submit your tutorial 10 exercises before \textbf{December 5 23:59}!
-        \item Don't forget tutorial 9 exercises\\(due on \textbf{TOMORROW November 28 23:59})!
+        \item Don't forget tutorial 8 and 9 exercises\\(due on \textbf{TOMORROW November 28 23:59})!
         \item Bonus: \LaTeX source code and compiled pdf of this slides available at
               \href{https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
               {https://github.com/xtz206/COMP1117-Autumn25-Tutorials/releases}
