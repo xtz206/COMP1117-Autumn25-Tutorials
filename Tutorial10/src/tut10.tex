@@ -251,22 +251,20 @@ main()
     Solution:
     \begin{minted}[fontsize=\small]{python}
 def main():
-    while True:
-        text = input("Enter a score (0-100): ")
-        try:
-            score = float(text)
-            if score < 0 or score > 100:
-                print("Error: Score must be between 0 and 100.")
-                continue
-            if score >= 90:
-                grade = 'A'
-            elif score >= 80:
-                grade = 'B'
-            pass # ... continue the grading logic
-            print(f"Grade: {grade}")
-            break
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+    text = input()
+    try:
+        score = float(text)
+        if score < 0 or score > 100:
+            print("Error: Score must be between 0 and 100.")
+            return
+        if score >= 90:
+            grade = "A"
+        elif score >= 80:
+            grade = "B"
+        pass # ... continue the grading logic
+        print(f"Grade: {grade}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 main()
     \end{minted}
 \end{frame}
